@@ -20,6 +20,10 @@ const routes = [
         component: () => import('../views/StudentListView.vue'),
       },
       {
+        path:'/container/studentList/createStudent',
+        component: () => import('../components/create/createStudent.vue'),
+      },
+      {
         path:'/container/teacherList',
         component: () => import('../views/TeacherListView.vue'),
       },
