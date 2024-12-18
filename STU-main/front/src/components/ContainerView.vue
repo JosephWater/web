@@ -11,6 +11,7 @@
           <router-link to="/container/studentList" style="text-decoration:none"><el-menu-item index="1-1">学生管理</el-menu-item></router-link>
           <router-link to="/container/teacherList" style="text-decoration:none"><el-menu-item index="1-2">教师管理</el-menu-item></router-link>
           <router-link to="/container/courseList" style="text-decoration:none"><el-menu-item index="1-3">课程管理</el-menu-item></router-link>
+          <router-link to="/container/honourList" style="text-decoration:none"><el-menu-item index="1-4">荣誉管理</el-menu-item></router-link>
       </el-submenu>
     </el-menu>
     </el-aside>
