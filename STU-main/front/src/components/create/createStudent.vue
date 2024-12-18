@@ -4,8 +4,8 @@
         <el-form-item label="姓名">
             <el-input v-model="form.person.name"></el-input>
         </el-form-item>
-        <el-form-item label="用户名">
-            <el-input v-model="form.person.name"></el-input>
+        <el-form-item label="学号">
+            <el-input v-model="form.user.username"></el-input>
         </el-form-item>
         <el-form-item label="学院">
             <el-select v-model="form.person.dept" placeholder="请选择学院">
@@ -66,7 +66,7 @@ export default {
           address: null
         },
         user: {
-          password: '',
+          password: '12345',
           username: ''
         }          
         }
@@ -78,6 +78,7 @@ export default {
         addStudent( this.form ).then((res) =>{
             if(res.data.data=="添加成功"){
                 this.$message.success('添加成功')
+                this.$router.push('/container/teacherList')
             }else{
                 this.$message.error('添加失败')
             }

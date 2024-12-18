@@ -14,3 +14,11 @@ export const addStudent = (data) =>{
         data
     })
 }
+//
+export const deleteStudent = (data) => {
+    return request({
+        method: 'POST',
+        url: '/student/deleteStudent',
+        data:data
+    })
+}

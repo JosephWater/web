@@ -26,8 +26,8 @@
       <el-table-column prop="person.address" label="地址" width="100">
       </el-table-column>
       <el-table-column fixed="right" label="操作" width="100">
-        <template slot-scope="scope">
-          <el-button @click="deleteClick(scope.row)" type="danger" size="mini"
+        <template  slot-scope="scoped">
+          <el-button @click="deleteClick(scoped.row)" type="danger" size="mini"
             >删除</el-button>
           <el-button  @click="$router.push('/container/studentList/createStudent')"  size="mini"
             >编辑</el-button>
@@ -37,7 +37,7 @@
   </div>
 </template>
 <script>
-import { getStudentList } from '../api/studenttable.ts';
+import { getStudentList,deleteStudent } from '../api/studenttable.ts';
 
 export default {
   data() {
@@ -54,6 +54,15 @@ export default {
       } catch (error) {
         console.error('获取学生列表出错:', error);
       }
+    },
+    deleteClick(row){
+      console.log(row.person.id)
+      this.$confirm('是否确认删除此学生','删除提示').then(() =>{
+        deleteStudent(row.person).then(res =>{
+          console.log(res)
+        })
+      })
+      console.log(deleteStudent)
     }
   },
   created() {
