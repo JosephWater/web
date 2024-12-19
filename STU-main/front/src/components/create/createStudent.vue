@@ -57,7 +57,7 @@ export default {
         person: {
           name: '',
           type: 1,
-          dept: '',
+          dept: null,
           card: null,
           gender: null,
           birthday: null,

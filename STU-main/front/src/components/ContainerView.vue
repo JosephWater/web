@@ -12,7 +12,8 @@
           <router-link to="/container/teacherList" style="text-decoration:none"><el-menu-item index="1-2">教师管理</el-menu-item></router-link>
           <router-link to="/container/courseList" style="text-decoration:none"><el-menu-item index="1-3">课程管理</el-menu-item></router-link>
           <router-link to="/container/honourList" style="text-decoration:none"><el-menu-item index="1-4">荣誉管理</el-menu-item></router-link>
-          <router-link to="/container/STUcourse" style="text-decoration:none"><el-menu-item index="1-4">选课</el-menu-item></router-link>
+          <router-link to="/container/STUcourse" style="text-decoration:none"><el-menu-item index="1-5">选课</el-menu-item></router-link>
+          <router-link to="/STUmainPage" style="text-decoration:none"><el-menu-item index="1-4">学生主页</el-menu-item></router-link>
       </el-submenu>
     </el-menu>
     </el-aside>
@@ -29,6 +30,7 @@
 </template>
 <script>
 export default {
+  
    methods: {
       handleOpen(key, keyPath) {
         console.log(key, keyPath);

@@ -52,7 +52,8 @@
         }
       },
       courseChoose( row ){
-        chooseCourse( jwt_decode(store.state.jwt) ,  row.id)
+        UserInfo = this.$store.getter.getUserInfo,
+        chooseCourse(  ,  row.id)
       }
     },
 
