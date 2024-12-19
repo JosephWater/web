@@ -40,7 +40,8 @@
 </template>  
   
 <script>
-import axios from "axios";
+import {login } from "../api/login.ts";
+
 export default {
   data() {
     return {
@@ -58,20 +59,30 @@ export default {
   },
   methods: {
     submitForm(formName) {
-      this.$refs[formName].validate((valid) => {
+      this.$refs[formName].validate(async(valid) => {
         if (valid) {
-          axios
-            .post("http://127.0.0.1:8080/login", this.loginForm)
-            .then((e) => {
-              if (e.data.code === 1) {
-                //this.$alert("登陆成功","" ,{confirmButtonText: "确定",})
-                this.$store.commit('setJwt',e.data.data.jwt)
-                this.$router.push('/container/studentList')
-                console.log(e.data);
-              } else {
-                this.$alert("用户名或密码错误", "", {confirmButtonText: "确定",});
-              }
+          try {
+            // 1. 使用封装的登录方法
+            const loginRes = await login(this.loginForm);
+            if (loginRes.data.code === 1) {
+              // 2. 保存JWT
+              this.$store.commit('setJwt', loginRes.data.data.jwt);              
+              // 4. 保存用户信息
+              this.$store.commit('setUserInfo', loginRes.data.data);             
+              // 5. 跳转
+              this.$router.push('/container/studentList');
+              console.log(loginRes.data);
+            } else {
+              this.$alert("用户名或密码错误", "", {
+                confirmButtonText: "确定"
+              });
+            }
+          } catch (error) {
+            console.error('登录失败:', error);
+            this.$alert("登录失败，请稍后重试", "", {
+              confirmButtonText: "确定"
             });
+          }          
         } else {
           console.log("error submit!!");
           return false;
