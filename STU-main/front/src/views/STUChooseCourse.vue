@@ -20,30 +20,25 @@
         </el-table-column>
         <el-table-column prop="teacherName" label="任课教师" width="100">
         </el-table-column>
-        <el-table-column prop="pre1" label="平时成绩" width="100">
-        </el-table-column>       
-        <el-table-column prop="pre2" label="期末成绩" width="100">
-        </el-table-column>
-
-        
         <el-table-column fixed="right" label="操作" width="100">
           <template slot-scope="scope">
-            <el-button @click="deleteClick(scope.row)" type="danger" size="mini"
-              >删除</el-button>
-            <el-button  @click="$router.push('/container/courseList/createCourse')"  size="mini"
-              >编辑</el-button>
+            <el-button @click="courseChoose(scope.row)" type="danger" size="mini"
+              >选课</el-button>
           </template>
         </el-table-column>
       </el-table>
     </div>
   </template>
   <script>
-  import { getCourseList } from '../api/coursetable.ts';
-  
+  import { chooseCourse, getCourseList } from '../api/coursetable.ts';
+  import { getInfo } from '../apt/login.ts'
+  import store from '@/store'
+  import jwt_decode from "jwt-decode";
   export default {
     data() {
       return {
-        courseList: []
+        courseList: [],
+        myInfo:[]
       }
     },
     methods: {
@@ -55,8 +50,12 @@
         } catch (error) {
           console.error('获取课程列表出错:', error);
         }
+      },
+      courseChoose( row ){
+        chooseCourse( jwt_decode(store.state.jwt) ,  row.id)
       }
     },
+
     created() {
       this.getAllCourseList();
     }

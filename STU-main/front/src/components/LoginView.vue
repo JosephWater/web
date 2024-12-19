@@ -61,11 +61,11 @@ export default {
       this.$refs[formName].validate((valid) => {
         if (valid) {
           axios
-            .post("http://localhost:8080/login", this.loginForm)
+            .post("http://127.0.0.1:8080/login", this.loginForm)
             .then((e) => {
               if (e.data.code === 1) {
-                this.$alert("登陆成功","" ,{confirmButtonText: "确定",})
-                this.$store.commit('setJwt',e.data.data)
+                //this.$alert("登陆成功","" ,{confirmButtonText: "确定",})
+                this.$store.commit('setJwt',e.data.data.jwt)
                 this.$router.push('/container/studentList')
                 console.log(e.data);
               } else {
