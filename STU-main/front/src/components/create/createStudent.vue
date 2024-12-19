@@ -80,9 +80,10 @@ export default {
                 this.$message.success('添加成功')
                 this.$router.push('/container/teacherList')
             }else{
-                this.$message.error('添加失败')
+                this.$message.error(res.data.data)
             }
-            console.log(res)
+            console.log(res.data)
+            console.log(res.data)
         })
       }
     }

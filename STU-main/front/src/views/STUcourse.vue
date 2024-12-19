@@ -52,9 +52,10 @@ export default {
         const UserInfo = this.$store.getters.getUserInfo;
         const res = await getStuCourse(UserInfo.studentId);
 
-        this.courseList = res.data.data.rows;
+        this.courseList = res.data.data;
         console.log(res);
-        console.log(res.data.data);
+        console.log(res.data.data.rows)
+        console.log(res.data.data[0].course.courseName);
       } catch (error) {
         console.error('获取课程列表出错:', error);
       }
@@ -66,6 +67,7 @@ export default {
           console.log(row)
           if(res.data.code == 1){
             this.$message.success('退课成功')
+          
           }else{
             this.$message.error(res.data.mes)
           }
