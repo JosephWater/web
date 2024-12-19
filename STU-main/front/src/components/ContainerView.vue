@@ -5,7 +5,7 @@
   <el-container>
     <!-- aside -->
     <el-aside width="200px">
-    <!--<el-menu :default-openeds="['1']">
+   <el-menu :default-openeds="['1']">
       <el-submenu index="2">
         <template slot="title"><i class="el-icon-menu"></i>管理系统</template>
           <router-link to="/container/studentList" style="text-decoration:none"><el-menu-item index="1-1">学生管理</el-menu-item></router-link>
@@ -13,10 +13,11 @@
           <router-link to="/container/courseList" style="text-decoration:none"><el-menu-item index="1-3">课程管理</el-menu-item></router-link>
           <router-link to="/container/honourList" style="text-decoration:none"><el-menu-item index="1-4">荣誉管理</el-menu-item></router-link>
           <router-link to="/container/STUcourse" style="text-decoration:none"><el-menu-item index="1-5">选课</el-menu-item></router-link>
+          <router-link to="/container/leaveList/leave" style="text-decoration:none"><el-menu-item index="1-6">请假管理</el-menu-item></router-link>
           <router-link to="/STUmainPage" style="text-decoration:none"><el-menu-item index="1-4">学生主页</el-menu-item></router-link>
       </el-submenu>
-    </el-menu>-->
-      <el-container v-if="userInfo.type == 1">
+    </el-menu>
+     <!--  <el-container v-if="userInfo.type == 1">
         <adminMenu />
       </el-container>
       <el-container v-if="userInfo.type == 2">
@@ -24,7 +25,7 @@
       </el-container>
       <el-container v-if="userInfo.type == 3">
         <teaMenu />
-      </el-container>
+      </el-container> -->
     </el-aside>
     <!-- main -->
     <el-main>
@@ -38,15 +39,15 @@
 </el-container>
 </template>
 <script>
-import stuMenu from './TreeMenu/stuMenu.vue';
+/* import stuMenu from './TreeMenu/stuMenu.vue';
 import teaMenu from './TreeMenu/teaMenu.vue';
-import adminMenu from './TreeMenu/adminMenu.vue';
+import adminMenu from './TreeMenu/adminMenu.vue'; */
 export default {
-  components:{
+  /* components:{
     stuMenu,
     teaMenu,
     adminMenu
-  },
+  }, */
   
    methods: {
       handleOpen(key, keyPath) {
