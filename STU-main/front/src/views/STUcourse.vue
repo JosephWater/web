@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div>
-      <el-button @click="$router.push('/container/courseList/createCourse')">添加课程</el-button>
-    </div>
+
     <el-table :data="courseList" border style="width: 100%">
       <el-table-column fixed prop="courseNum" label="课序号" width="100">
       </el-table-column>
@@ -29,14 +27,16 @@
       <el-table-column fixed="right" label="操作" width="100">
         <template slot-scope="scope">
           <el-button @click="deleteClick(scope.row)" type="danger" size="mini"
-            >删除</el-button>
-          <el-button  @click="$router.push('/container/courseList/createCourse')"  size="mini"
-            >编辑</el-button>
+            >退课</el-button>
         </template>
       </el-table-column>
     </el-table>
-  </div>
+    <div align:center>    
+      <el-button type="info" plain @click="$router.push('/container/studentList/editStudent')"  size="mini"
+    >返回</el-button></div>
+    </div>
 </template>
+
 <script>
 import { getStuCourse } from '../api/coursetable.ts';
 
@@ -49,7 +49,9 @@ export default {
   methods: {
     async getAllStuCourseList() {
       try {
-        const res = await getStuCourse();
+        const UserInfo = this.$store.getters.getUserInfo;
+        const res = await getStuCourse(UserInfo.studentId);
+
         this.courseList = res.data.data.rows;
         console.log(res);
       } catch (error) {

@@ -16,13 +16,14 @@
           <router-link to="/STUmainPage" style="text-decoration:none"><el-menu-item index="1-4">学生主页</el-menu-item></router-link>
       </el-submenu>
     </el-menu>-->
+    <router-link to="/STUmainPage" style="text-decoration:none"><el-menu-item index="1-4">学生主页</el-menu-item></router-link>
       <el-container v-if="userInfo.type == 1">
         <adminMenu />
       </el-container>
-      <el-container v-if="userInfo.type == 2">
+      <el-container v-if="userInfo.type == 3">
         <stuMenu />
       </el-container>
-      <el-container v-if="userInfo.type == 3">
+      <el-container v-if="userInfo.type == 2">
         <teaMenu />
       </el-container>
     </el-aside>

@@ -1,7 +1,7 @@
 <template>
     <div>
       <div>
-        <el-button @click="$router.push('/container/courseList/createCourse')">添加课程</el-button>
+        <el-button @click="$router.push('/container/STUcourse')">查看选课结果</el-button>
       </div>
       <el-table :data="courseList" border style="width: 100%">
         <el-table-column fixed prop="courseNum" label="课序号" width="100">
@@ -31,14 +31,14 @@
   </template>
   <script>
   import { chooseCourse, getCourseList } from '../api/coursetable.ts';
-  import { getInfo } from '../apt/login.ts'
-  import store from '@/store'
-  import jwt_decode from "jwt-decode";
+
+  //import store from '@/store'
+  //import jwt_decode from "jwt-decode";
   export default {
     data() {
       return {
         courseList: [],
-        myInfo:[]
+        myInfo:[],
       }
     },
     methods: {
@@ -51,9 +51,16 @@
           console.error('获取课程列表出错:', error);
         }
       },
-      courseChoose( row ){
-        UserInfo = this.$store.getter.getUserInfo,
-        chooseCourse(  ,  row.id)
+      courseChoose(row ){
+        const UserInfo = this.$store.getters.getUserInfo;
+        chooseCourse(UserInfo.studentId ,  row.id).then((res) =>{
+          console.log(res)
+          if(res.data.code == 1){
+            this.$message.success('选课成功')
+          }else{
+            this.$message.error(res.data.mes)
+          }
+        })
       }
     },
 
