@@ -26,6 +26,16 @@ export const chooseCourse = (id1, id2) => {
         }
     });
 }
+export const stuDelCourse = (id1, id2) => {
+    return request({
+        method: 'POST',
+        url: '/courseChoose/delete',
+        data: {
+            studentId: id1,  // 将 id1 放到请求体中的 stuid 字段
+            courseId: id2  // 将 id2 放到请求体中的 courseid 字段
+        }
+    });
+}
 //学生课程列表
 export const getStuCourse = (id) =>{
     return request({

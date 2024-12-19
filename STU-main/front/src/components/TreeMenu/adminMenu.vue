@@ -16,10 +16,10 @@
                 <template #title>
                     <span> 人员管理 </span>
                 </template>
-                <el-menu-item index="/teacher-panel">
+                <el-menu-item index="/container/teacherList">
                     <span>教师管理</span>
                 </el-menu-item>
-                <el-menu-item index="/student-panel">
+                <el-menu-item index="/container/studentList">
                     <span>学生管理</span>
                 </el-menu-item>
             </el-submenu>
