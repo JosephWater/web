@@ -29,7 +29,7 @@
         <template  slot-scope="scoped">
           <el-button @click="deleteClick(scoped.row)" type="danger" size="mini"
             >删除</el-button>
-          <el-button  @click="$router.push('/container/studentList/createStudent')"  size="mini"
+          <el-button  @click="$router.push('/container/studentList/editStudent')"  size="mini"
             >编辑</el-button>
         </template>
       </el-table-column>
@@ -38,7 +38,8 @@
 </template>
 <script>
 import { getStudentList,deleteStudent } from '../api/studenttable.ts';
-
+//import store from '@/store'
+//import jwt_decode from "jwt-decode";
 export default {
   data() {
     return {
@@ -48,6 +49,7 @@ export default {
   methods: {
     async getAllStudentList() {
       try {
+        //console.log(jwt_decode(store.state.jwt))
         const res = await getStudentList();
         this.studentList = res.data.data.rows;
         console.log(res);
@@ -56,6 +58,7 @@ export default {
       }
     },
     deleteClick(row){
+
       console.log(row.person.id)
       this.$confirm('是否确认删除此学生','删除提示').then(() =>{
         deleteStudent(row.person).then(res =>{

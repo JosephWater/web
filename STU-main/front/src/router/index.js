@@ -43,6 +43,10 @@ const routes = [
         path:'/container/honourList/createHonour',
         component: () => import('../components/create/createHonour.vue'),
       },
+      {
+        path:'/container/STUcourse',
+        component: () => import('../views/STUcourse.vue'),
+      },
     ]
   },
   {
