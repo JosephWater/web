@@ -55,6 +55,10 @@ const routes = [
         path:'/container/leaveList/leave',
         component: () => import('../views/LeaveListView.vue'),
       },
+      {
+        path:'/container/STUChooseCourse',
+        component: () => import('../views/STUChooseCourse.vue'),
+      },
     ]
   },
   {
