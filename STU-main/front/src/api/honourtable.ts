@@ -14,3 +14,10 @@ export const addHonour = (data) =>{
         data
     })
 }
+export const deleteHonour = (data) => {
+    return request({
+        method: 'POST',
+        url: '/honour/deleteHonour',
+        data:data
+    })
+};

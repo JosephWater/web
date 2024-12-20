@@ -84,6 +84,10 @@ const routes = [
         path:'/container/STUactivity',
         component: () => import('../views/STUactivity.vue'),
       },
+      {
+        path:'/container/honourList',
+        component: () => import('../views/HonourListView.vue'),
+      },
 
     ]
   },

@@ -16,7 +16,7 @@ export const processedLeaveListView = () =>{
 export const approveLeave = (data) =>{
     return request({
         method: 'POST',
-        url: '/studentleave/approveLeave',
+        url: '/studentleave/approveStudentleave',
         data
     })
 }
@@ -24,7 +24,7 @@ export const approveLeave = (data) =>{
 export const rejectLeave = (data) => {
     return request({
         method: 'POST',
-        url: '/studentleave/rejectLeave',
+        url: '/studentleave/rejectStudentleave',
         data:data
     })
 }
