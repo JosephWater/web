@@ -37,22 +37,24 @@
       <el-table-column prop="person.address" label="地址" width="100">
       </el-table-column>
       <el-table-column label="操作" align="center">
-        <div align="center" >
-          <el-button @click="$router.push('/container/studentList/editStudent')" size="mini" icon="el-icon-edit"></el-button>
-          <el-button @click="$router.push('/container/studentList/editStudent')" size="mini" icon="el-icon-more"></el-button>
+        <div align="center" slot-scope="scoped">
+          <el-button @click="$router.push('/container/studentList/editStudent')" size="mini"
+                     icon="el-icon-edit"></el-button>
+          <el-button @click="$router.push('/container/studentList/editStudent')" size="mini"
+                     icon="el-icon-more"></el-button>
           <el-button @click="deleteClick(scoped.row)" type="danger" size="mini" icon="el-icon-delete"></el-button>
         </div>
       </el-table-column>
     </el-table>
     <div class="block">
       <el-pagination
-        @size-change="handleSizeChange"
-        @current-change="handleCurrentChange"
-        :current-page.sync="currentPage2"
-        :page-sizes="[10, 20, 30, 40]"
-        :page-size="10"
-        layout="sizes, prev, pager, next"
-        :total="1000"
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          :current-page.sync="currentPage2"
+          :page-sizes="[10, 20, 30, 40]"
+          :page-size="10"
+          layout="sizes, prev, pager, next"
+          :total="1000"
       >
       </el-pagination>
     </div>
@@ -76,20 +78,27 @@ export default {
     async getAllStudentList() {
       try {
         //console.log(jwt_decode(store.state.jwt))
-        const res = await getStudentList({ page: this.page, pageSize: this.pageSize ,select:this.select,input:this.input3});
+        const res = await getStudentList({
+          page: this.page,
+          pageSize: this.pageSize,
+          select: this.select,
+          input: this.input3
+        });
         this.studentList = res.data.data.rows;
         console.log(res);
       } catch (error) {
         console.error('获取学生列表出错:', error);
       }
     },
-    handleSizeChange(val){
+    handleSizeChange(val) {
       this.pageSize = val;
       this.getAllStudentList();
     },
-    research(){this.getAllStudentList();},
-    handleCurrentChange(val){
-      this.page=val;
+    research() {
+      this.getAllStudentList();
+    },
+    handleCurrentChange(val) {
+      this.page = val;
       this.getAllStudentList();
     },
     deleteClick(row) {
@@ -101,9 +110,9 @@ export default {
         })
       }).catch(() => {
         this.$message({
-            type: 'info',
-            message: '已取消删除'
-          });
+          type: 'info',
+          message: '已取消删除'
+        });
       });
     }
   },

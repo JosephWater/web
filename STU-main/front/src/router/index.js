@@ -70,7 +70,7 @@ const routes = [
       },
       {
         path:'/container/activity',
-        component: () => import('../views/activityView.vue'),
+        component: () => import('../views/ActivityView.vue'),
       },
 
     ]
