@@ -1,4 +1,4 @@
-pm <template>
+<template>
   <el-container>
     <!-- head -->
   <el-header>
@@ -14,7 +14,7 @@ pm <template>
   <el-container>
     <!-- aside -->
     <el-aside width="200px">
-    <router-link to="/STUmainPage" style="text-decoration:none"><el-menu-item index="1-4">学生主页</el-menu-item></router-link>
+    //<router-link to="/STUmainPage" style="text-decoration:none"><el-menu-item index="1-4">学生主页</el-menu-item></router-link>
       <el-container v-if="userInfo.type == 1">
         <adminMenu />
       </el-container>
@@ -23,7 +23,7 @@ pm <template>
       </el-container>
       <el-container v-if="userInfo.type == 2">
         <teaMenu />
-      </el-container> 
+      </el-container> -->
     </el-aside>
     <!-- main -->
     <el-main>

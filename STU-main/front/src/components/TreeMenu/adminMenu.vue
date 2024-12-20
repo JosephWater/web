@@ -1,7 +1,6 @@
 <template>
     <el-aside>
         <el-menu router unique-opened>
-            <h1>山东大学学生管理系统</h1>
             <el-submenu index="1">
                 <template #title>
                     <span> 教务管理 </span>
