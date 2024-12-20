@@ -1,11 +1,18 @@
 import request from "../utils/request.ts";
 
-export const getStudentList = () =>{
+
+export const getStudentList = (pagination) => {
     return request({
-        method:'GET',
-        url:'/student/getStudentList',
-    })
-}
+        method: 'GET',
+        params: {
+            page: pagination.page,
+            pageSize: pagination.pageSize,
+            select:pagination.select,
+            input:pagination.input
+        },
+        url: '/student/getStudentList',
+    });
+};
 //新增和修改
 export const addStudent = (data) =>{
     return request({
