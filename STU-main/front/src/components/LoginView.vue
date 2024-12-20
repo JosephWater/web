@@ -12,8 +12,11 @@
         ref="loginForm"
         label-width="100px"
         class="login-form"
+        label-position="top"
+        text-align: left
+        
       >
-        <el-form-item label="用户名" prop="username">
+        <el-form-item label="用户名" prop="username" >
           <el-input
             v-model="loginForm.username"
             prefix-icon="el-icon-user"
@@ -21,7 +24,7 @@
             class="input-with-focus"
           ></el-input>
         </el-form-item>
-        <el-form-item label="密码" prop="password">
+        <el-form-item label="密码" prop="password" >
           <el-input
             type="password"
             v-model="loginForm.password"
@@ -99,6 +102,8 @@ export default {
   
 <style scoped>
 .login-container {
+  background-image: url(../assets/loginbackground.png);
+  background-size: cover;
   position: relative;
   width: 100%;
   height: 100vh;
@@ -118,26 +123,22 @@ export default {
 }
 
 .background-image {
-  background-image: url();
+  
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
 .login-box {
+
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 360px;
+  width: 500px;
   padding: 40px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  background-color: rgba(
-    255,
-    255,
-    255,
-    0.9
-  );
+  background-color: rgba(255, 255, 255, 0.541);
   border-radius: 12px;
   text-align: center;
   z-index: 1;
@@ -151,7 +152,14 @@ export default {
 }
 
 .login-form .el-form-item {
+  font-size: 10px;
   margin-bottom: 24px;
+  text-align: left;
+}
+.login-form.el-form-item__label {
+  font-size: 100px;  
+  font-weight: bold; /* 可选：设置字体粗细 */
+  color: #09fb36; /* 可选：设置字体颜色 */
 }
 
 .input-with-focus {
