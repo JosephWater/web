@@ -6,7 +6,7 @@
     <el-table :data="studentList" border style="width: 100%">
       <el-table-column fixed prop="person.name" label="姓名" width="100">
       </el-table-column>
-      <el-table-column prop="user.username" label="用户名" width="100">
+      <el-table-column prop="user.username" label="学号" width="100">
       </el-table-column>
       <el-table-column prop="major" label="专业" width="100"> </el-table-column>
       <el-table-column prop="className" label="班级" width="100">

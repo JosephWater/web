@@ -1,7 +1,16 @@
 <template>
   <el-container>
     <!-- head -->
-  <el-header>山东大学</el-header>
+  <el-header>
+    <el-breadcrumb separator="/">
+        <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+        <el-breadcrumb-item><a href="/">活动管理</a></el-breadcrumb-item>
+        <el-breadcrumb-item>活动列表</el-breadcrumb-item>
+        <el-breadcrumb-item>活动详情</el-breadcrumb-item>
+      </el-breadcrumb>
+            
+          
+  </el-header>
   <el-container>
     <!-- aside -->
     <el-aside width="200px">
@@ -18,6 +27,12 @@
     </el-aside>
     <!-- main -->
     <el-main>
+      <el-breadcrumb separator="/">
+        <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
+        <el-breadcrumb-item><a href="/">活动管理</a></el-breadcrumb-item>
+        <el-breadcrumb-item>活动列表</el-breadcrumb-item>
+        <el-breadcrumb-item>活动详情</el-breadcrumb-item>
+      </el-breadcrumb>
       <router-view></router-view>
     </el-main>
   </el-container>
@@ -49,7 +64,9 @@ export default {
     computed:
         {   
           userInfo(){
+            console.log(this.$store.getters.getUserInfo);
             return this.$store.getters.getUserInfo;
+            
         }
 
       }
@@ -61,7 +78,7 @@ export default {
     justify-content: center;  
     align-items: center;
     height: 100%;
-    background: #cf2525;  
+    background:white;  
     color: #ffffff;  
     font-size: 30px;  
  

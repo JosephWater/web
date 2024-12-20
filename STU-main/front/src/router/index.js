@@ -13,7 +13,7 @@ const routes = [
   {
     path: '/container',
     redirect: '/container/CourseListView.vue',
-    component: () => import('../components/ContainerView.vue'),
+    component: () => import('../components/ContainerView2.vue'),
     children:[
       {
         path:'/container/studentList',
