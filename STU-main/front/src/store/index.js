@@ -19,6 +19,11 @@ export default new Vuex.Store({
         },
         setUserInfo(state, info) {  // 添加setUserInfo
             state.userInfo = info
+        },
+        Statelogout(state) { 
+            state.jwt = ''; 
+            state.userInfo = null; 
+            localStorage.removeItem('jwt'); 
         }
         
     },

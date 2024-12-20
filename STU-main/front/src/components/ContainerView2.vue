@@ -5,9 +5,16 @@
       <div class="footer-right-content">
         <el-button @click="fullScreen()" size="mini" icon="el-icon-full-screen"></el-button>
         <el-button @click="refresh()" size="mini" icon="el-icon-refresh" style="margin-right: 10px"></el-button>
-        <span class="footer-text">你好! {{ userInfo.username }}</span>
-        <el-button @click="logout()" type="primary" size="mini" class="footer-button"
-                   icon="el-icon-switch-button"></el-button>
+        <template v-if="userInfo.username != '请登录'">
+          <span class="footer-text">你好! {{ userInfo.username }}</span>
+            <el-button @click="logout()" type="primary" size="mini" class="footer-button"
+              icon="el-icon-switch-button"></el-button>
+        </template>
+        <template v-if="userInfo.username == '请登录'">
+          <span class="footer-text">请登录！</span>
+          <el-button @click="$router.push('/login')" type="primary" size="mini" class="footer-button-login">登录</el-button>
+        </template>
+
       </div>
     </el-footer>
     <el-container>
@@ -50,6 +57,7 @@
 import stuMenu from './TreeMenu/stuMenu.vue';
 import teaMenu from './TreeMenu/teaMenu.vue';
 import adminMenu from './TreeMenu/adminMenu.vue';
+import { mapMutations } from 'vuex';
 import store from '@/store'
 
 export default {
@@ -60,11 +68,13 @@ export default {
   },
 
   methods: {
+    ...mapMutations(['Statelogout']),
     handleOpen(key, keyPath) {
       console.log(key, keyPath);
     },
     logout() {
       store.state.jwt = '';
+      //this.Statelogout();
       store.state.userInfo.username = '请登录';
       this.$router.push('/login');
     },
@@ -106,7 +116,17 @@ export default {
   font-size: 14px;
   color: #333;
 }
+.footer-button-login {
+  font-size: 12px;
+  background-color: #4B8BF4;
+  border-color: white;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
 
+.footer-button-login:hover {
+  border-color: white;
+  background-color: #5f99f5;
+}
 .footer-button {
   font-size: 12px;
   background-color: rgb(255, 0, 51);
