@@ -1,8 +1,14 @@
 import request from "../utils/request.ts";
 
-export const getTeacherList = () =>{
+export const getTeacherList = (pagination) =>{
     return request({
         method:'GET',
+        params: {
+            page: pagination.page,
+            pageSize: pagination.pageSize,
+            select:pagination.select,
+            input:pagination.input
+        },
         url:'/teacher/getTeacherList',
     })
 }

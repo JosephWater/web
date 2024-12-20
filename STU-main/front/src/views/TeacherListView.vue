@@ -1,7 +1,17 @@
 <template>
   <div>
-    <div>
+    <div style="display:flex;margin-top: 15px;">
       <el-button @click="$router.push('/container/teacherList/createTeacher')">添加教师</el-button>
+      <el-input placeholder="请输入内容" v-model="input3" class="input-with-select"
+                style="width: 400px;position: absolute ;right: 20px;">
+        <el-select v-model="select" slot="prepend" placeholder="请选择" style="width: 120px;">
+          <el-option label="姓名" value="1"></el-option>
+          <el-option label="用户名" value="2"></el-option>
+          <el-option label="职称" value="3"></el-option>
+          <el-option label="学位" value="4"></el-option>
+        </el-select>
+        <el-button @click="research" slot="append" icon="el-icon-search"></el-button>
+      </el-input>
     </div>
     <el-table :data="teacherList" border style="width: 100%">
       <el-table-column fixed prop="person.name" label="姓名" width="100">
@@ -32,6 +42,18 @@
         </template>
       </el-table-column>
     </el-table>
+    <div class="block">
+      <el-pagination
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          :current-page.sync="currentPage2"
+          :page-sizes="[10, 20, 30, 40]"
+          :page-size="10"
+          layout="sizes, prev, pager, next"
+          :total="1000"
+      >
+      </el-pagination>
+    </div>
   </div>
 </template>
 <script>
@@ -41,19 +63,32 @@ import { getTeacherList,deleteTeacher } from '../api/teachertable.ts';
 export default {
   data() {
     return {
-      teacherList: []
+      teacherList: [],
+      input3: '',
+      select: '',
+      page: 1,
+      pageSize: 10
     }
   },
   methods: {
     async getAllteacherList() {
       try {
-        const res = await getTeacherList();
+        const res = await getTeacherList({ page: this.page, pageSize: this.pageSize ,select:this.select,input:this.input3});
         this.teacherList = res.data.data.rows;
         console.log(res);
         console.log(this.teacherList);
       } catch (error) {
         console.error('获取教师列表出错:', error);
       }
+    },
+    handleSizeChange(val){
+      this.pageSize = val;
+      this.getAllteacherList();
+    },
+    research(){this.getAllteacherList();},
+    handleCurrentChange(val){
+      this.page=val;
+      this.getAllteacherList();
     },
     deleteClick(row){
       console.log(row.person.id);
