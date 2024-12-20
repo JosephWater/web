@@ -4,7 +4,7 @@
         <el-form-item label="姓名">
             <el-input v-model="form.person.name"></el-input>
         </el-form-item>
-        <el-form-item label="学号">
+        <el-form-item label="用户名">
             <el-input v-model="form.person.username"></el-input>
         </el-form-item>
         <el-form-item label="学院">
@@ -13,23 +13,20 @@
                 <el-option label="集成电路学院" value="集成电路学院"></el-option>
             </el-select>
         </el-form-item>
-        <el-form-item v-if="form.person.dept == '软件学院'" label="专业">
-            <el-select v-model="form.major" placeholder="请选择专业">
-                <el-option label="软件工程" value="软件工程"></el-option>
-                <el-option label="工业软件" value="工业软件"></el-option>
+        <el-form-item label="职称">
+            <el-select v-model="form.title" placeholder="请选择职称">
+                <el-option label="助理" value="1"></el-option>
+                <el-option label="导师" value="2"></el-option>
+                <el-option label="副教授" value="3"></el-option>
+                <el-option label="教授" value="4"></el-option>
             </el-select>
         </el-form-item>
-        <el-form-item v-if="form.person.dept == '集成电路学院'" label="专业">
-            <el-select v-model="form.major" placeholder="请选择专业">              
-                <el-option label="微电子" value="1"></el-option>
-                <el-option label="集成电路" value="2"></el-option>
-            </el-select>
-        </el-form-item>
-        <el-form-item label="班级">
-            <el-select v-model="form.className" placeholder="请选择班级">
-                <el-option label="1班" value="1"></el-option>
-                <el-option label="2班" value="2"></el-option>
-                <el-option label="菁英班" value="2"></el-option>
+        <el-form-item label="学位">
+            <el-select v-model="form.degree" placeholder="请选择学位">
+                <el-option label="硕士" value="1"></el-option>
+                <el-option label="博士" value="2"></el-option>
+                <el-option label="博士后" value="3"></el-option>
+                <el-option label="院士" value="3"></el-option>
             </el-select>
         </el-form-item>
         <el-form-item label="身份证号">
@@ -52,20 +49,19 @@
         </el-form-item> 
       <el-form-item>
         <el-button type="primary" @click="onSubmit">立即创建</el-button>
-        <el-button @click="$router.push('/container/studentList')">取消</el-button>
+        <el-button @click="$router.push('/container/teacherList')">取消</el-button>
     </el-form-item>
     </el-form>
 
 </template>
 <script>
-import { addStudent } from '../../api/studenttable.ts'
+import { addTeacher } from '../../api/teachertable.ts'
 export default {
-    name: "creatStudent",
     data() {
       return {
         form: {
-        major: null,
-        className: null,
+        title: null,
+        degree: null,
         person: {
           address: null,
           birthday: null,
@@ -75,7 +71,7 @@ export default {
           gender: null,
           name: '',
           phone: null,
-          type: 3,
+          type: 2,
           username: ''
         }         
         }
@@ -84,10 +80,10 @@ export default {
     methods: {
       onSubmit() {
         //console.log('submit!');
-        addStudent( this.form ).then((res) =>{
+        addTeacher( this.form ).then((res) =>{
             if(res.data.data=="添加成功"){
                 this.$message.success('添加成功')
-                this.$router.push('/container/studentList')
+                this.$router.push('/container/teacherList')
             }else{
                 this.$message.error(res.data.msg)
             }

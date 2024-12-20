@@ -1,17 +1,17 @@
 <template>
   <div>
     <div>
-      <el-button @click="$router.push('/container/studentList/createStudent')">添加学生</el-button>
+      <el-button @click="$router.push('/container/teacherList/createTeacher')">添加教师</el-button>
     </div>
-    <el-table :data="studentList" border style="width: 100%">
+    <el-table :data="teacherList" border style="width: 100%">
       <el-table-column fixed prop="person.name" label="姓名" width="100">
       </el-table-column>
-      <el-table-column prop="user.username" label="用户名" width="100">
-      </el-table-column>
-      <el-table-column prop="major" label="专业" width="100"> </el-table-column>
-      <el-table-column prop="className" label="班级" width="100">
+      <el-table-column prop="person.username" label="用户名" width="120">
       </el-table-column>
       <el-table-column prop="person.dept" label="学院" width="100">
+      </el-table-column>
+      <el-table-column prop="degree" label="职称" width="100"> </el-table-column>
+      <el-table-column prop="title" label="学位" width="100">
       </el-table-column>
       <el-table-column prop="person.card" label="身份证号" width="100">
       </el-table-column>
@@ -27,49 +27,46 @@
       </el-table-column>
       <el-table-column fixed="right" label="操作" width="100">
         <template  slot-scope="scoped">
-          <el-button @click="deleteClick(scoped.row)" type="danger" size="mini"
-            >删除</el-button>
-          <el-button  @click="$router.push('/container/studentList/editStudent')"  size="mini"
-            >编辑</el-button>
+          <el-button @click="deleteClick(scoped.row)" type="danger" size="mini">删除</el-button>
+          <el-button  @click="$router.push('/container/studentList/editStudent')"  size="mini">编辑</el-button>
         </template>
       </el-table-column>
     </el-table>
   </div>
 </template>
 <script>
-import { getStudentList,deleteStudent } from '../api/studenttable.ts';
+import { getTeacherList,deleteTeacher } from '../api/teachertable.ts';
 //import store from '@/store'
 //import jwt_decode from "jwt-decode";
 export default {
   data() {
     return {
-      studentList: []
+      teacherList: []
     }
   },
   methods: {
-    async getAllStudentList() {
+    async getAllteacherList() {
       try {
-        //console.log(jwt_decode(store.state.jwt))
-        const res = await getStudentList();
-        this.studentList = res.data.data.rows;
+        const res = await getTeacherList();
+        this.teacherList = res.data.data.rows;
         console.log(res);
+        console.log(this.teacherList);
       } catch (error) {
-        console.error('获取学生列表出错:', error);
+        console.error('获取教师列表出错:', error);
       }
     },
     deleteClick(row){
-
-      console.log(row.person.id)
-      this.$confirm('是否确认删除此学生','删除提示').then(() =>{
-        deleteStudent(row.person).then(res =>{
-          console.log(res)
+      console.log(row.person.id);
+      this.$confirm('是否确认删除此教师','删除提示').then(() =>{
+        deleteTeacher(row.person).then(() =>{
+          this.$message.success('删除成功')
         })
-      })
-      console.log(deleteStudent)
+      }).catch(() => {
+    });
     }
   },
   created() {
-    this.getAllStudentList();
+    this.getAllteacherList();
   }
 }
 

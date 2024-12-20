@@ -17,11 +17,11 @@
                 <template #title>
                     <span> 人员管理 </span>
                 </template>
-                <el-menu-item index="/container/teacherList">
-                    <span>教师管理</span>
-                </el-menu-item>
                 <el-menu-item index="/container/studentList">
                     <span>学生管理</span>
+                </el-menu-item>
+                <el-menu-item index="/container/teacherList">
+                    <span>教师管理</span>
                 </el-menu-item>
             </el-submenu>
             <router-link to="/STUmainPage" style="text-decoration:none"><el-menu-item index="1-4">学生主页</el-menu-item></router-link>

@@ -20,10 +20,6 @@ const routes = [
         component: () => import('../views/StudentListView.vue'),
       },
       {
-        path:'/STUmainPage',
-        component: () => import('../views/homePage/STUhomePage.vue'),
-      },
-      {
         path:'/container/studentList/createStudent',
         component: () => import('../components/create/createStudent.vue'),
       },
@@ -32,8 +28,20 @@ const routes = [
         component: () => import('../components/create/createStudent.vue'),
       },
       {
+        path:'/STUmainPage',
+        component: () => import('../views/homePage/STUhomePage.vue'),
+      },
+      {
         path:'/container/teacherList',
         component: () => import('../views/TeacherListView.vue'),
+      },
+      {
+        path:'/container/teacherList/createTeacher',
+        component: () => import('../components/create/createTeacher.vue'),
+      },
+      {
+        path:'/container/studentList/editTeacher',
+        component: () => import('../components/create/createTeacher.vue'),
       },
       {
         path:'/container/courseList',

@@ -6,12 +6,12 @@
     <el-table :data="studentList" border style="width: 100%">
       <el-table-column fixed prop="person.name" label="姓名" width="100">
       </el-table-column>
-      <el-table-column prop="user.username" label="学号" width="100">
+      <el-table-column prop="person.username" label="用户名" width="120">
+      </el-table-column>
+      <el-table-column prop="person.dept" label="学院" width="100">
       </el-table-column>
       <el-table-column prop="major" label="专业" width="100"> </el-table-column>
       <el-table-column prop="className" label="班级" width="100">
-      </el-table-column>
-      <el-table-column prop="person.dept" label="学院" width="100">
       </el-table-column>
       <el-table-column prop="person.card" label="身份证号" width="100">
       </el-table-column>
@@ -25,12 +25,10 @@
       </el-table-column>
       <el-table-column prop="person.address" label="地址" width="100">
       </el-table-column>
-      <el-table-column fixed="right" label="操作" width="100">
+      <el-table-column  fixed="right" label="操作" width="100">
         <template  slot-scope="scoped">
-          <el-button @click="deleteClick(scoped.row)" type="danger" size="mini"
-            >删除</el-button>
-          <el-button  @click="$router.push('/container/studentList/editStudent')"  size="mini"
-            >编辑</el-button>
+          <el-button @click="deleteClick(scoped.row)" type="danger" size="mini">删除</el-button>
+          <el-button  @click="$router.push('/container/studentList/editStudent')"  size="mini">编辑</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -58,14 +56,14 @@ export default {
       }
     },
     deleteClick(row){
-
-      console.log(row.person.id)
+      console.log(row.person.id);
       this.$confirm('是否确认删除此学生','删除提示').then(() =>{
-        deleteStudent(row.person).then(res =>{
-          console.log(res)
+        deleteStudent(row.person).then(() =>{
+          this.getAllStudentList();
+          this.$message.success('删除成功')
         })
-      })
-      console.log(deleteStudent)
+      }).catch(() => {
+    });
     }
   },
   created() {
