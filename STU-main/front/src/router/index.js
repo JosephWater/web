@@ -51,6 +51,10 @@ const routes = [
         path:'/container/courseList/createCourse',
         component: () => import('../components/create/createCourse.vue'),
       },
+      {
+        path:'/container/courseList/editCourse',
+        component: () => import('../components/create/createCourse.vue'),
+      },
       
       {
         path:'/container/STUcourse',
