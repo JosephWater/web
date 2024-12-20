@@ -37,7 +37,7 @@
       <el-table-column prop="person.address" label="地址" width="100">
       </el-table-column>
       <el-table-column label="操作" align="center">
-        <div align="center" >
+        <div align="center" slot-scope="scoped">
           <el-button @click="$router.push('/container/studentList/editStudent')" size="mini" icon="el-icon-edit"></el-button>
           <el-button @click="$router.push('/container/studentList/editStudent')" size="mini" icon="el-icon-more"></el-button>
           <el-button @click="deleteClick(scoped.row)" type="danger" size="mini" icon="el-icon-delete"></el-button>
