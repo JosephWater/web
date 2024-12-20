@@ -66,7 +66,8 @@ export default {
             const loginRes = await login(this.loginForm);
             if (loginRes.data.code === 1) {
               // 2. 保存JWT
-              this.$store.commit('setJwt', loginRes.data.data.jwt);              
+              this.$store.commit('setJwt', loginRes.data.data.jwt);   
+              localStorage.setItem('jwt', loginRes.data.data.jwt);           
               // 4. 保存用户信息
               this.$store.commit('setUserInfo', loginRes.data.data);             
               // 5. 跳转
