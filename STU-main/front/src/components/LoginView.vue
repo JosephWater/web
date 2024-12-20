@@ -1,3 +1,6 @@
+<head>
+  <link rel 
+</head>
 <template>
   <div class="login-container">
     <div class="login-background"></div>
@@ -115,6 +118,7 @@ export default {
 }
 
 .background-image {
+  background-image: url();
   width: 100%;
   height: 100%;
   object-fit: cover;
