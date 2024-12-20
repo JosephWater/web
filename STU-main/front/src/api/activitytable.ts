@@ -29,6 +29,22 @@ export const deleteActivity = (data) => {
         data:data
     })
 };
+export const getStudentActivity = () => {
+    return request({
+        method: 'GET',
+        url: '/activity/getList',
+    })
+};
+export const StudentApplyActivity = (id1,id2) => {
+    return request({
+        method: 'POST',
+        url: '/activity/StudentApplyActivity',
+        data:{
+            studentId:id1,
+            activityId:id2
+        }
+    })
+};
 export const getActivitychooseList = (pagination) => {
     return request({
         method: 'GET',

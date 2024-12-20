@@ -31,7 +31,7 @@
             </el-submenu>
             
             <router-link to="/STUmainPage" style="text-decoration:none"><el-menu-item index="1-4">学生主页</el-menu-item></router-link>
-        
+            <router-link to="/container/STUactivity" style="text-decoration:none"><el-menu-item index="1-4">活动申请</el-menu-item></router-link>
         </el-menu>
     </el-aside>
 </template>
