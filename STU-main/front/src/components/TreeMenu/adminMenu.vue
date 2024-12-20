@@ -3,7 +3,7 @@
     <el-menu router unique-opened>
       <el-submenu index="1">
         <template #title>
-          <span> 学业管理 </span>
+          <span>教务管理</span>
         </template>
         <el-menu-item index="/container/courseList">
           <span>课程管理</span>
@@ -25,7 +25,7 @@
       </el-submenu>
       <el-submenu index="3">
         <template #title>
-          <span>教务管理</span>
+          <span>学生事项</span>
         </template>
         <el-menu-item index="/container/activity">
           <span>活动管理</span>
@@ -39,16 +39,7 @@
         <el-menu-item index="/container/teacherList">
           <span>荣誉管理</span>
         </el-menu-item>
-      </el-submenu>
-      <router-link to="/STUmainPage" style="text-decoration:none">
-        <el-menu-item index="1-4">学生主页</el-menu-item>
-      </router-link>
-      <el-menu-item index="/course-panel">
-        <span>学生选课</span>
-      </el-menu-item>
-      <el-menu-item>
-        <span>教务管理</span>
-      </el-menu-item>
+    </el-submenu>
     </el-menu>
   </el-aside>
 </template>

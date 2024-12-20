@@ -6,7 +6,8 @@
       <el-table :data="courseList" border style="width: 100%">
         <el-table-column fixed prop="courseNum" label="课序号" width="100">
         </el-table-column>
-
+        <el-table-column prop="term" label="开课学期" width="100">
+        </el-table-column>
         <el-table-column prop="courseName" label="课程名称" width="100">
         </el-table-column>
         <el-table-column prop="openingUnit" label="开课单位" width="100">
@@ -35,13 +36,7 @@
               >编辑</el-button>
           </template>
         </el-table-column> -->
-        <el-table-column label="操作" align="center">
-        <div align="center" >
-          <el-button @click="$router.push('/container/courseList/editCourse')" size="mini" icon="el-icon-edit"></el-button>
-          <el-button @click="$router.push('/container/courseList/editCourse')" size="mini" icon="el-icon-more"></el-button>
-          <el-button @click="deleteClick(scoped.row)" type="danger" size="mini" icon="el-icon-delete"></el-button>
-        </div>
-      </el-table-column>
+
 
       </el-table>
     </div>

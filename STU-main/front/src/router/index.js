@@ -61,6 +61,10 @@ const routes = [
         component: () => import('../views/STUcourse.vue'),
       },
       {
+        path:'/container/STUcourseList',
+        component: () => import('../views/STUcourseList.vue'),
+      },
+      {
         path:'/container/leaveList/processedLeave',
         component: () => import('../views/ProcessedLeaveListView.vue'),
       },
