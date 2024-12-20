@@ -4,7 +4,7 @@
         <el-form-item label="姓名">
             <el-input v-model="form.person.name"></el-input>
         </el-form-item>
-        <el-form-item label="学号">
+        <el-form-item label="用户名">
             <el-input v-model="form.person.username"></el-input>
         </el-form-item>
         <el-form-item label="学院">
@@ -49,13 +49,13 @@
         </el-form-item> 
       <el-form-item>
         <el-button type="primary" @click="onSubmit">立即创建</el-button>
-        <el-button @click="$router.push('/container/studentList')">取消</el-button>
+        <el-button @click="$router.push('/container/teacherList')">取消</el-button>
     </el-form-item>
     </el-form>
 
 </template>
 <script>
-import { addStudent } from '../../api/studenttable.ts'
+import { addTeacher } from '../../api/teachertable.ts'
 export default {
     data() {
       return {
@@ -71,7 +71,7 @@ export default {
           gender: null,
           name: '',
           phone: null,
-          type: 3,
+          type: 2,
           username: ''
         }         
         }
@@ -80,10 +80,10 @@ export default {
     methods: {
       onSubmit() {
         //console.log('submit!');
-        addStudent( this.form ).then((res) =>{
+        addTeacher( this.form ).then((res) =>{
             if(res.data.data=="添加成功"){
                 this.$message.success('添加成功')
-                this.$router.push('/container/studentList')
+                this.$router.push('/container/teacherList')
             }else{
                 this.$message.error(res.data.msg)
             }
