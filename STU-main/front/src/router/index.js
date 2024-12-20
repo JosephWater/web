@@ -40,7 +40,7 @@ const routes = [
         component: () => import('../components/create/createTeacher.vue'),
       },
       {
-        path:'/container/studentList/editTeacher',
+        path:'/container/teacherList/editTeacher',
         component: () => import('../components/create/createTeacher.vue'),
       },
       {
@@ -68,6 +68,11 @@ const routes = [
         path:'/container/STUChooseCourse',
         component: () => import('../views/STUChooseCourse.vue'),
       },
+      {
+        path:'/container/activity',
+        component: () => import('../views/activityView.vue'),
+      },
+
     ]
   },
   {
