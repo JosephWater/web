@@ -26,14 +26,22 @@
         </el-table-column>
 
         
-        <el-table-column fixed="right" label="操作" width="100">
+     <!--    <el-table-column fixed="right" label="操作" width="100">
           <template slot-scope="scope">
             <el-button @click="deleteClick(scope.row)" type="danger" size="mini"
               >删除</el-button>
             <el-button  @click="$router.push('/container/courseList/createCourse')"  size="mini"
               >编辑</el-button>
           </template>
-        </el-table-column>
+        </el-table-column> -->
+        <el-table-column label="操作" align="center">
+        <div align="center" >
+          <el-button @click="$router.push('/container/courseList/editCourse')" size="mini" icon="el-icon-edit"></el-button>
+          <el-button @click="$router.push('/container/courseList/editCourse')" size="mini" icon="el-icon-more"></el-button>
+          <el-button @click="deleteClick(scoped.row)" type="danger" size="mini" icon="el-icon-delete"></el-button>
+        </div>
+      </el-table-column>
+
       </el-table>
     </div>
   </template>

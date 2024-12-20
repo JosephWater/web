@@ -37,9 +37,9 @@
       </el-table-column>
       <el-table-column label="操作" align="center">
         <div align="center" >
-          <el-button @click="deleteClick(scoped.row)" type="danger" size="mini" icon="el-icon-edit"></el-button>
+          <el-button @click="deleteClick(scoped.row)" size="mini" icon="el-icon-edit"></el-button>
           <el-button  @click="$router.push('/container/teacherList/editTeacher')"  size="mini" icon="el-icon-more"></el-button>
-          <el-button  @click="$router.push('/container/teacherList/editTeacher')"  size="mini" icon="el-icon-delete"></el-button>
+          <el-button  @click="$router.push('/container/teacherList/editTeacher')"  type="danger" size="mini" icon="el-icon-delete"></el-button>
         </div>
       </el-table-column>
     </el-table>
