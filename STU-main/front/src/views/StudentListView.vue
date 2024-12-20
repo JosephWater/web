@@ -11,7 +11,7 @@
           <el-option label="专业" value="3"></el-option>
           <el-option label="班级" value="4"></el-option>
         </el-select>
-        <el-button slot="append" icon="el-icon-search"></el-button>
+        <el-button @click="research" slot="append" icon="el-icon-search"></el-button>
       </el-input>
     </div>
     <el-table :data="studentList" border style="width: 100%">
@@ -86,6 +86,7 @@ export default {
       this.pageSize = val;
       this.getAllStudentList();
     },
+    research(){this.getAllStudentList();},
     handleCurrentChange(val){
       this.page=val;
       this.getAllStudentList();
