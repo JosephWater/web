@@ -1,4 +1,4 @@
-<template>
+pm <template>
   <el-container>
     <!-- head -->
   <el-header>山东大学</el-header>
@@ -14,7 +14,7 @@
       </el-container>
       <el-container v-if="userInfo.type == 2">
         <teaMenu />
-      </el-container> -->
+      </el-container> 
     </el-aside>
     <!-- main -->
     <el-main>
