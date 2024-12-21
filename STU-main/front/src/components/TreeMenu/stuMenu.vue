@@ -22,6 +22,17 @@
           <span>请假记录</span>
         </el-menu-item>
       </el-submenu>
+      <el-submenu index="2">
+        <template #title>
+          <span> 学业管理 </span>
+        </template>
+        <el-menu-item index="/container/STUclassTable">
+          <span>我的课表</span>
+        </el-menu-item>
+        <el-menu-item index="/container/STUscoreList">
+          <span>我的成绩</span>
+        </el-menu-item>
+      </el-submenu>
 
       <router-link to="/STUmainPage" style="text-decoration:none">
         <el-menu-item index="1-4">学生主页</el-menu-item>
