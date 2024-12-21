@@ -25,6 +25,13 @@ const routes = [
                 }
             },
             {
+                path: '/container/editPassword',
+                component: () => import('../components/edit/editPassword.vue'),
+                meta: {
+                    title: '修改密码'
+                }
+            },
+            {
                 path: '/container/studentList',
                 component: () => import('../views/StudentListView.vue'),
                 meta: {
