@@ -6,7 +6,7 @@
         <el-button @click="fullScreen()" size="mini" icon="el-icon-full-screen"></el-button>
         <el-button @click="refresh()" size="mini" icon="el-icon-refresh" style="margin-right: 10px"></el-button>
         <template v-if="userInfo.username != '请登录'">
-          <span class="footer-text">你好! {{ userInfo.username }}</span>
+          <span class="footer-text">你好! {{ studentInfo.person.name }} ({{ userInfo.username }})</span>
             <el-button @click="logout()" type="primary" size="mini" class="footer-button"
               icon="el-icon-switch-button"></el-button>
         </template>
@@ -59,12 +59,19 @@ import teaMenu from './TreeMenu/teaMenu.vue';
 import adminMenu from './TreeMenu/adminMenu.vue';
 import { mapMutations } from 'vuex';
 import store from '@/store'
+import { getStudentInfo } from "../api/login.ts";
 
 export default {
+  data(){
+    return{
+          studentInfo:[],
+    }
+  },
   components: {
     stuMenu,
     teaMenu,
-    adminMenu
+    adminMenu,
+
   },
 
   methods: {
@@ -72,6 +79,17 @@ export default {
     handleOpen(key, keyPath) {
       console.log(key, keyPath);
     },
+    async getStuInfo( ){
+        try {
+        const UserInfo = this.$store.getters.getUserInfo;
+        const info = await getStudentInfo(UserInfo.studentId);
+        
+        this.studentInfo = info.data.data;
+        console.log(info);
+      } catch (error) {
+        console.error('获取学生信息出错:', error);
+      }
+      },
     logout() {
       store.state.jwt = '';
       //this.Statelogout();
@@ -99,6 +117,9 @@ export default {
 
         }
 
+      },
+      created(){
+        this.getStuInfo();
       }
 }
 </script>

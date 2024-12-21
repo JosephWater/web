@@ -13,7 +13,7 @@ export const getStudentInfo = (id) =>{
   return request({
     method:'GET',
     url:'/student/getList',
-    params:{studentId:id}
+    params:{id:id}
   })
 }
   
