@@ -37,7 +37,7 @@
     </div>
   </template>
   <script>
-  import { chooseCourse, getCourseList } from '../api/coursetable.ts';
+  import { chooseCourse, getCourseList2 } from '../api/coursetable.ts';
 
   //import store from '@/store'
   //import jwt_decode from "jwt-decode";
@@ -57,9 +57,11 @@
       },
       async getAllCourseList() {
         try {
-          const res = await getCourseList();
-          this.courseList = res.data.data.rows;
-          console.log(res);
+          const res = await getCourseList2();
+          console.log(res.data.data);
+          this.courseList = res.data.data;
+          console.log(this.courseList);
+
         } catch (error) {
           console.error('获取课程列表出错:', error);
         }
