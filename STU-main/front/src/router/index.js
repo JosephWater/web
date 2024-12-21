@@ -24,6 +24,20 @@ const routes = [
         }
       },
       {
+        path:'/container/scoreList',
+        component: () => import('../views/scoreListView.vue'),
+        meta:{
+          title: '学生管理'
+        }
+      },
+      {
+        path:'/container/editScore',
+        component: () => import('../components/edit/editScore.vue'),
+        meta:{
+          title: '学生管理'
+        }
+      },
+      {
         path:'/container/studentList',
         component: () => import('../views/StudentListView.vue'),
         meta:{
@@ -39,18 +53,12 @@ const routes = [
       },
       {
         path:'/container/studentList/editStudent',
-        component: () => import('../components/edit/editStudent.vue'),
+        component: () => import('../components/create/createStudent.vue'),
         meta:{
           title: '学生管理 / 编辑学生'
         }
       },
-      {
-        path:'/container/studentList/chooseStudent',
-        component: () => import('../components/StuChooseView.vue'),
-        meta:{
-          title: '学生管理 / 编辑学生'
-        }
-      },
+
       {
         path:'/container/teacherList',
         component: () => import('../views/TeacherListView.vue'),
@@ -67,7 +75,7 @@ const routes = [
       },
       {
         path:'/container/teacherList/editTeacher',
-        component: () => import('../components/edit/editTeacher.vue'),
+        component: () => import('../components/create/createTeacher.vue'),
         meta:{
           title: '学生管理'
         }
@@ -136,13 +144,6 @@ const routes = [
       {
         path:'/container/STUcourseList',
         component: () => import('../views/STUcourseList.vue'),
-      },
-      {
-        path:'/container/scoreList',
-        component: () => import('../views/scoreListView.vue'),
-        meta:{
-          title:'课程管理'
-        }
       },
       {
         path:'/container/activity',

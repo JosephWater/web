@@ -1,8 +1,5 @@
 <template>
     <div>
-      <div style="display:flex;margin-top: 15px;margin-bottom:15px">
-        <el-button @click="$router.push('/container/courseList/createCourse')">添加课程</el-button>
-      </div>
       <el-table :data="courseList" border style="width: 100%">
         <el-table-column fixed prop="courseNum" label="课序号" width="100">
         </el-table-column>
@@ -27,16 +24,6 @@
         </el-table-column>
         <el-table-column prop="time" label="上课时间" width="100" :formatter="formatPercentage2">
         </el-table-column>
-  
-  
-        <!--    <el-table-column fixed="right" label="操作" width="100">
-             <template slot-scope="scope">
-               <el-button @click="deleteClick(scope.row)" type="danger" size="mini"
-                 >删除</el-button>
-               <el-button  @click="$router.push('/container/courseList/createCourse')"  size="mini"
-                 >编辑</el-button>
-             </template>
-           </el-table-column> -->
         <el-table-column label="操作" align="center">
           <div align="center" slot-scope="scoped">
             <el-button @click="edit(scoped.row)" size="mini"
@@ -49,7 +36,6 @@
   </template>
   <script>
   import {getCourseList} from '../api/coursetable.ts';
-  import {deleteCourse} from "../api/coursetable.ts";
   
   export default {
     data() {
@@ -62,23 +48,13 @@
       edit(row){
         console.log(row)
         this.$store.commit('setCourseInfo', row);
-        this.$router.push('/container/courseList/editCourse')
+        this.$router.push('/container/editScore')
       },
       formatPercentage(row, column, cellValue) {
         return (cellValue)+ '%';
       },
       formatPercentage2(row, column, cellValue) {
         return '周'+cellValue[0]+'第'+cellValue%10+'节课';
-      },
-      deleteClick(row){
-        console.log(row.id);
-        this.$confirm('是否确认删除此课程','删除提示').then(() =>{
-          deleteCourse(row).then(() =>{
-            this.getAllCourseList(),
-            this.$message.success('删除成功')
-          })
-        }).catch(() => {
-        });
       },
       async getAllCourseList() {
         try {

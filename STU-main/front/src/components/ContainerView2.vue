@@ -12,12 +12,13 @@
           <template v-if="userInfo.username == 'admin'">
           <span class="footer-text">你好! {{ userInfo.username }}</span>
           </template>
-            <el-button @click="logout()" type="primary" size="mini" class="footer-button"
-              icon="el-icon-switch-button"></el-button>
+          <el-button @click="logout()" type="primary" size="mini" class="footer-button"
+                     icon="el-icon-switch-button"></el-button>
         </template>
         <template v-if="userInfo.username == '请登录'">
           <span class="footer-text">请登录！</span>
-          <el-button @click="$router.push('/login')" type="primary" size="mini" class="footer-button-login">登录</el-button>
+          <el-button @click="$router.push('/login')" type="primary" size="mini" class="footer-button-login">登录
+          </el-button>
         </template>
 
       </div>
@@ -45,9 +46,10 @@
         <el-header height=35px class="custom-header" style="text-align: right; font-size: 12px ">
           <el-breadcrumb separator="/">
             <el-breadcrumb-item
-            v-for="(item , index) in $route.matched"
-            :key="index"
-            :to="{ path: item.path }">{{ item.meta.title }}</el-breadcrumb-item>
+                v-for="(item , index) in $route.matched"
+                :key="index"
+                :to="{ path: item.path }">{{ item.meta.title }}
+            </el-breadcrumb-item>
           </el-breadcrumb>
         </el-header>
 
@@ -62,14 +64,14 @@
 import stuMenu from './TreeMenu/stuMenu.vue';
 import teaMenu from './TreeMenu/teaMenu.vue';
 import adminMenu from './TreeMenu/adminMenu.vue';
-import { mapMutations } from 'vuex';
+import {mapMutations} from 'vuex';
 import store from '@/store'
-import { getStudentInfo } from "../api/login.ts";
+import {getStudentInfo} from "../api/login.ts";
 
 export default {
-  data(){
-    return{
-          studentInfo:[],
+  data() {
+    return {
+      studentInfo: [],
     }
   },
   components: {
@@ -84,17 +86,17 @@ export default {
     handleOpen(key, keyPath) {
       console.log(key, keyPath);
     },
-    async getStuInfo( ){
-        try {
+    async getStuInfo() {
+      try {
         const UserInfo = this.$store.getters.getUserInfo;
         const info = await getStudentInfo(UserInfo.studentId);
-        
+
         this.studentInfo = info.data.data;
         console.log(info);
       } catch (error) {
         console.error('获取学生信息出错:', error);
       }
-      },
+    },
     logout() {
       store.state.jwt = '';
       //this.Statelogout();
@@ -123,9 +125,9 @@ export default {
         }
 
       },
-      created(){
-        this.getStuInfo();
-      }
+  created() {
+    this.getStuInfo();
+  }
 }
 </script>
 <style>
@@ -146,6 +148,7 @@ export default {
   font-size: 14px;
   color: #333;
 }
+
 .footer-button-login {
   font-size: 12px;
   background-color: #4B8BF4;
@@ -157,6 +160,7 @@ export default {
   border-color: white;
   background-color: #5f99f5;
 }
+
 .footer-button {
   font-size: 12px;
   background-color: rgb(255, 0, 51);
@@ -247,7 +251,7 @@ export default {
   transition: all 0.3s ease;
   border-radius: 8px;
   margin: 2px;
-  box-shadow:0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .custom-top:hover {
