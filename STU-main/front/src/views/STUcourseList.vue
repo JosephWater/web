@@ -1,6 +1,5 @@
 <template>
   <div>
-
     <el-table :data="courseList" border style="width: 100%">
       <el-table-column fixed prop="courseNum" label="课序号" width="100">
       </el-table-column>

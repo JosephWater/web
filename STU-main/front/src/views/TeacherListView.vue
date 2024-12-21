@@ -20,8 +20,8 @@
       </el-table-column>
       <el-table-column prop="person.dept" label="学院" width="100">
       </el-table-column>
-      <el-table-column prop="degree" label="职称" width="100"> </el-table-column>
-      <el-table-column prop="title" label="学位" width="100">
+      <el-table-column prop="title" label="职称" width="100"> </el-table-column>
+      <el-table-column prop="degree" label="学位" width="100">
       </el-table-column>
       <el-table-column prop="person.card" label="身份证号" width="100">
       </el-table-column>
@@ -37,9 +37,9 @@
       </el-table-column>
       <el-table-column label="操作" align="center">
         <div align="center" slot-scope="scoped">
-          <el-button @click="deleteClick(scoped.row)" type="danger" size="mini" icon="el-icon-edit"></el-button>
+          <el-button @click="edit(scoped.row)"  size="mini" icon="el-icon-edit"></el-button>
           <el-button  @click="$router.push('/container/teacherList/editTeacher')"  size="mini" icon="el-icon-more"></el-button>
-          <el-button  @click="$router.push('/container/teacherList/editTeacher')"  size="mini" icon="el-icon-delete"></el-button>
+          <el-button  @click="$router.push('/container/teacherList/editTeacher')" type="danger" size="mini" icon="el-icon-delete"></el-button>
         </div>
       </el-table-column>
     </el-table>
@@ -72,6 +72,11 @@ export default {
     }
   },
   methods: {
+    edit(row){
+      console.log(row)
+      this.$store.commit('setTeacherInfo', row);
+      this.$router.push('/container/teacherList/editTeacher')
+    },
     async getAllteacherList() {
       try {
         const res = await getTeacherList({ page: this.page, pageSize: this.pageSize ,select:this.select,input:this.input3});

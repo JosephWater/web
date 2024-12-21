@@ -21,6 +21,14 @@ export const addStudent = (data) =>{
         data
     })
 }
+export const updateStudent = (data) =>{
+    console.log(data)
+    return request({
+        method: 'POST',
+        url: '/student/updateStudent',
+        data:data
+    })
+}
 //
 export const deleteStudent = (data) => {
     return request({

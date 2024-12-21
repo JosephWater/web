@@ -28,3 +28,11 @@ export const deleteTeacher = (data) => {
         data:data
     })
 }
+export const updateTeacher = (data) =>{
+    console.log(data)
+    return request({
+        method: 'POST',
+        url: '/teacher/updateTeacher',
+        data:data
+    })
+}

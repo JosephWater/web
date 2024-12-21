@@ -228,6 +228,7 @@ export default {
               editCourse(this.form).then((res) => {
                 if (res.data.data == "更新成功") {
                   this.$message.success('已保存')
+                  this.$router.push('/container/courseList')
                 } else {
                   this.$message.error(res.data.msg)
                 }

@@ -39,7 +39,7 @@ const routes = [
       },
       {
         path:'/container/studentList/editStudent',
-        component: () => import('../components/create/createStudent.vue'),
+        component: () => import('../components/edit/editStudent.vue'),
         meta:{
           title: '学生管理 / 编辑学生'
         }
@@ -61,7 +61,7 @@ const routes = [
       },
       {
         path:'/container/teacherList/editTeacher',
-        component: () => import('../components/create/createTeacher.vue'),
+        component: () => import('../components/edit/editTeacher.vue'),
         meta:{
           title: '学生管理'
         }

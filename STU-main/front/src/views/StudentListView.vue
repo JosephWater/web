@@ -38,7 +38,7 @@
       </el-table-column>
       <el-table-column label="操作" align="center">
         <div align="center" slot-scope="scoped">
-          <el-button @click="$router.push('/container/studentList/editStudent')" size="mini"
+          <el-button @click="edit(scoped.row)" size="mini"
                      icon="el-icon-edit"></el-button>
           <el-button @click="$router.push('/container/studentList/editStudent')" size="mini"
                      icon="el-icon-more"></el-button>
@@ -75,6 +75,11 @@ export default {
     }
   },
   methods: {
+    edit(row){
+      console.log(row)
+      this.$store.commit('setStudentInfo', row);
+      this.$router.push('/container/studentList/editStudent')
+    },
     async getAllStudentList() {
       try {
         //console.log(jwt_decode(store.state.jwt))

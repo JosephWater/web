@@ -85,7 +85,6 @@
   
   <script>
   import { getStuCourse } from "../../api/coursetable.ts";
-  import { getStudentInfo } from "../../api/login.ts";
   export default {
     data() {
       return {
