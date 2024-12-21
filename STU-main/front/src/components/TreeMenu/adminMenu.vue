@@ -8,7 +8,7 @@
         <el-menu-item index="/container/courseList">
           <span>课程管理</span>
         </el-menu-item>
-        <el-menu-item>
+        <el-menu-item index="/container/scoreList">
           <span>成绩管理</span>
         </el-menu-item>
       </el-submenu>
