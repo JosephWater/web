@@ -18,6 +18,9 @@
         <el-menu-item index="/container/STUhonour">
           <span>我的荣誉</span>
         </el-menu-item>
+        <el-menu-item index="/container/STULeave">
+          <span>请假记录</span>
+        </el-menu-item>
       </el-submenu>
 
       <router-link to="/STUmainPage" style="text-decoration:none">

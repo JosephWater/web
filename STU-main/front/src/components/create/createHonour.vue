@@ -8,7 +8,7 @@
             <el-input v-model="form.studentName"></el-input>
         </el-form-item>
         <el-form-item label="荣誉等级">
-            <el-select v-model="form.award" placeholder="请选择荣誉等级">
+            <el-select v-model="form.honorLevel" placeholder="请选择荣誉等级">
               <el-option label="院级" value="院级"></el-option>
               <el-option label="校级" value="校级"></el-option>
               <el-option label="市级" value="市级"></el-option>
@@ -20,16 +20,21 @@
        
         </el-form-item>
 
-        <el-form-item label="竞赛名称">
-            <el-input v-model="form.competition"></el-input>
+        <el-form-item label="荣誉名称">
+            <el-input v-model="form.name"></el-input>
         </el-form-item>
 
-        <el-form-item label="实习经历">
-            <el-input v-model="form.train"></el-input>
-        </el-form-item>
-        <el-form-item label="科研成果">
-            <el-input v-model="form.scientific"></el-input>
-        </el-form-item>
+        <el-form-item label="获得日期">
+          <div>
+         <el-date-picker
+          v-model="form.time"
+          type="datetime"
+            placeholder="选择获奖时间"
+          align="right"
+          :picker-options="pickerOptions">
+        </el-date-picker>
+      </div>
+    </el-form-item>
 
 
 
@@ -50,12 +55,12 @@ export default {
     data() {
       return {
         form:{
-          studentId:null,
+          studentNum:null,
         studentName: null,
-        award: null,
-        competition: null,
-        train: null,
-        scientific: null,
+        honorLevel: null,
+        name: null,
+        time:null,
+        
         
                 
         }

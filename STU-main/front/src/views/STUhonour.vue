@@ -30,9 +30,7 @@
 
         
       </el-table>
-      <div align:center>    
-        <el-button type="info" plain @click="$router.push('/container/studentList/editStudent')"  size="mini"
-      >返回</el-button></div>
+      
       </div>
   </template>
   

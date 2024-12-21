@@ -153,6 +153,28 @@ const routes = [
         }
       },
       {
+        path:'/container/honourList/createHonour',
+        component: () => import('../components/create/createHonour'),
+        meta:{
+          title: '学生管理'
+        }
+      },
+      {
+        path:'/container/STUhonour',
+        component: () => import('../views/STUhonour.vue'),
+        meta:{
+          title: '个人荣誉'
+        }
+      },
+      {
+        path:'/container/STULeave',
+        component: () => import('../views/STULeave.vue'),
+        meta:{
+          title: '请假记录'
+        }
+      },
+    
+      {
         path:'/container/honourList',
         component: () => import('../views/HonourListView.vue'),
       },
