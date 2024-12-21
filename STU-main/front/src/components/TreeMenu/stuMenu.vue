@@ -14,6 +14,9 @@
                 <el-menu-item index="/container/STUChooseCourse">
                     <span>选课管理</span>
                 </el-menu-item>
+                <el-menu-item index="/container/STUhonour">
+                    <span>我的荣誉</span>
+                </el-menu-item>
             </el-submenu>
             <el-submenu index="2">
                 <template #title>
@@ -27,6 +30,9 @@
                 </el-menu-item>
                 <el-menu-item index="/container/STUChooseCourse">
                     <span>选课管理</span>
+                </el-menu-item>
+                <el-menu-item index="/container/STUhonour">
+                    <span>我的荣誉</span>
                 </el-menu-item>
             </el-submenu>
             

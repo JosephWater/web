@@ -29,3 +29,19 @@ export const rejectLeave = (data) => {
     })
 }
 
+
+export const addLeave = (data) =>{
+    return request({
+        method: 'POST',
+        url: '/studentleave/updateStudentleave',
+        data
+    })
+}
+export const getSTULeave = (id) =>{
+    return request({
+        method: 'GET',
+        url:'/leave/getLeaveListFromStudent',
+        params:{studentId: id}
+    })
+};
+

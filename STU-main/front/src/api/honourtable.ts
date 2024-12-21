@@ -20,4 +20,11 @@ export const deleteHonour = (data) => {
         url: '/honour/deleteHonour',
         data:data
     })
+}
+export const getStuHonour = (id) =>{
+    return request({
+        method: 'GET',
+        url:'/honour/getHonourListFromStudent',
+        params:{studentId: id}
+    })
 };
