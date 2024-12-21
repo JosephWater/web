@@ -131,22 +131,21 @@ export default {
 </script>
 <style scoped>
 .classtable {
-  padding: 10px 10px 0px 10px;
+  margin :0 17px 0 0;
+  padding: 10px 20px 0px 20px;
   border-radius: 12px;
   /*overflow: hidden;*/
   box-shadow: 0 4px 12px rgba(26, 115, 232, 0.2);
   float: left;
-  width: 60%;
+  width: 59%;
   height: 800px;
-  margin-left: 5px;
 }
 .classtable1 {
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(26, 115, 232, 0.2);
   float: left;
-  width: 36%;
+  width: 35%;
   height: 400px;
-  margin-left: 5px;
 }
 </style>
