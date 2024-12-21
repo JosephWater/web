@@ -20,13 +20,14 @@
       
 
 
-      <el-table-column fixed="right" label="操作" width="100">
-        <template  slot-scope="scoped">
+      <el-table-column label="操作" align="center">
+        <div align="center" slot-scope="scoped">
           <el-button @click="approveClick(scoped.row)" size="mini"
-            >批准</el-button>
-          <el-button  @click="rejectClick(scoped.row)" type="danger"  size="mini"
-            >拒绝</el-button>
-        </template>
+                     icon="el-icon-check"></el-button>
+          <el-button @click="rejectClick(scoped.row)" size="mini"
+                     icon="el-icon-close"></el-button>
+         
+        </div>
       </el-table-column>
     </el-table>
   </div>

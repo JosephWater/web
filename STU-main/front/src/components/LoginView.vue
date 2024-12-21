@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 408ba2fab9ad4bf7f7d3543c15217e4ab9f76346
 <template>
   <div class="login-container">
     <div class="login-background"></div>
@@ -14,7 +17,7 @@
         text-align: left
         
       >
-        <el-form-item label="用户名" prop="username" >
+        <el-form-item label="用户名" prop="username" class="custom-username-field">
           <el-input
             v-model="loginForm.username"
             prefix-icon="el-icon-user"
@@ -195,5 +198,8 @@ export default {
 
 .register-link:hover {
   color: #66b1ff;
+}
+.custom-username-field .el-form-item__label {
+  font-size: 20px; /* 修改标签的字体大小 */
 }
 </style>

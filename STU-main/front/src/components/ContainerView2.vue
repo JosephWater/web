@@ -85,6 +85,10 @@ export default {
       location.reload();
     },
     fullScreen() {
+      this.$message({
+        type: 'info',
+        message: '浏览器版本不支持'
+      });
     }
   },
   computed:

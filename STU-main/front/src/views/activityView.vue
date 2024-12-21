@@ -22,7 +22,6 @@
         <el-button type="primary" @click="handleConfirm">确定</el-button>
       </span>
       </el-dialog>
-      <el-button @click="$router.push('/container/studentList/createStudent')">添加请求</el-button>
       <el-select v-model="select" slot="prepend" placeholder="全部请求" style="margin-left:15px">
         <el-option label="全部请求" value="1"></el-option>
         <el-option label="已批准" value="2"></el-option>
