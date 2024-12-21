@@ -9,9 +9,6 @@
         <el-menu-item index="/container/STUcourseList">
           <span>培养方案</span>
         </el-menu-item>
-        <el-menu-item index="/STUmainPage">
-          <span>我的课表</span>
-        </el-menu-item>
         <el-menu-item index="/container/STUChooseCourse">
           <span>选课管理</span>
         </el-menu-item>
