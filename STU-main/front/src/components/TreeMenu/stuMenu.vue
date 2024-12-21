@@ -1,8 +1,10 @@
 <template>
   <el-aside>
     <el-menu router unique-opened>
-
-      <el-submenu index="1">
+      <el-menu-item index="/container/HomePage">
+        <span>学生主页</span>
+      </el-menu-item>
+      <el-submenu index="2">
         <template #title>
           <span> 培养管理 </span>
         </template>
@@ -19,7 +21,7 @@
           <span>请假记录</span>
         </el-menu-item>
       </el-submenu>
-      <el-submenu index="2">
+      <el-submenu index="3">
         <template #title>
           <span> 学业管理 </span>
         </template>
@@ -31,9 +33,7 @@
         </el-menu-item>
       </el-submenu>
 
-      <router-link to="/STUmainPage" style="text-decoration:none">
-        <el-menu-item index="1-4">学生主页</el-menu-item>
-      </router-link>
+
       <router-link to="/container/STUactivity" style="text-decoration:none">
         <el-menu-item index="1-4">活动申请</el-menu-item>
       </router-link>

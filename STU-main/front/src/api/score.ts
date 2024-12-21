@@ -9,3 +9,18 @@ export const getScore = (id) =>{
         params:{id:id}
     })
 }
+export const deleteScore = (data) => {
+    return request({
+        method: 'POST',
+        url: '/courseChoose/delete',
+        data:data
+    })
+}
+export const addScore = (data) => {
+    console.log(data)
+    return request({
+        method: 'POST',
+        url: '/courseChoose/addScore',
+        data:data
+    })
+}

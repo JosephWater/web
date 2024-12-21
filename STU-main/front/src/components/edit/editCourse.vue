@@ -1,6 +1,6 @@
 <template>
-  <el-form ref="form" :model="form" label-width="80px">
 
+  <el-form ref="form" :model="form" label-width="80px">
     <el-form-item label="课程名称">
       <el-input v-model="form.courseName"></el-input>
     </el-form-item>

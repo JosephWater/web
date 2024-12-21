@@ -3,7 +3,6 @@
       <el-table :data="courseList" border style="width: 100%">
         <el-table-column fixed prop="courseNum" label="课序号" width="100">
         </el-table-column>
-  
         <el-table-column prop="courseName" label="课程名称" width="100">
         </el-table-column>
         <el-table-column prop="openingUnit" label="开课单位" width="100">
@@ -30,13 +29,13 @@
                        >查看选课学生</el-button>
           </div>
         </el-table-column>
-  
+
       </el-table>
     </div>
   </template>
   <script>
   import {getCourseList} from '../api/coursetable.ts';
-  
+
   export default {
     data() {
       return {
@@ -44,7 +43,7 @@
       }
     },
     methods: {
-        
+
       edit(row){
         console.log(row)
         this.$store.commit('setCourseInfo', row);
@@ -66,10 +65,10 @@
         }
       }
     },
-  
+
     created() {
       this.getAllCourseList();
     }
   }
-  
+
   </script>
