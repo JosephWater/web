@@ -7,8 +7,15 @@ export const login = (loginForm) => {
       method: 'POST',
       url: '/login',
       data: loginForm
-    });
+    })
   };
+export const getStudentInfo = (id) =>{
+  return request({
+    method:'GET',
+    url:'/student/getList',
+    params:{studentId:id}
+  })
+}
   
   // 获取用户信息
 

@@ -1,4 +1,46 @@
 <template>
+  <div>
+  <div class="StuInfo">
+  <el-descriptions class="margin-top" title="个人信息" :column="3" :size="size" border>
+    <el-descriptions-item>
+      <template slot="label">
+        <i class="el-icon-user"></i>
+        用户名
+      </template>
+      kooriookami
+    </el-descriptions-item>
+    <el-descriptions-item>
+      <template slot="label">
+        <i class="el-icon-mobile-phone"></i>
+        手机号
+      </template>
+      18100000000
+    </el-descriptions-item>
+    <el-descriptions-item>
+      <template slot="label">
+        <i class="el-icon-location-outline"></i>
+        居住地
+      </template>
+      苏州市
+    </el-descriptions-item>
+    <el-descriptions-item>
+      <template slot="label">
+        <i class="el-icon-tickets"></i>
+        备注
+      </template>
+      <el-tag size="small">学校</el-tag>
+    </el-descriptions-item>
+    <el-descriptions-item>
+      <template slot="label">
+        <i class="el-icon-office-building"></i>
+        联系地址
+      </template>
+      江苏省苏州市吴中区吴中大道 1188 号
+    </el-descriptions-item>
+  </el-descriptions>
+
+  </div >
+  <div class="classtable">
     <div class="timetable">
       <div class="header">
         <div class="cell"></div>
@@ -33,6 +75,12 @@
         </div>
       </div>
     </div>
+  </div>
+  <div class="calender">
+    <el-calendar v-model="value">
+    </el-calendar>
+  </div>
+</div>
   </template>
   
   <script>
@@ -44,6 +92,7 @@
         days: ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"],
         times: ["第一节", "第二节", "第三节", "第四节", "第五节"],
         courseList: [],
+        date: new Date()
       };
     },
     methods: {
@@ -79,16 +128,45 @@
   </script>
 
 <style scoped>
+.calender{
+  padding: 10px 20px 15px 1px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(26, 115, 232, 0.2);
+  margin-bottom: 30px;
+  float:right;
+  width: 35%;
+  height: 585px;
+  margin-left: 5px;
+}
+.StuInfo{
+  padding: 10px 10px 15px 10px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(26, 115, 232, 0.2);
+  margin-bottom: 30px;
+}
+.classtable{
+  padding: 10px 0px 30px 10px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(26, 115, 232, 0.2);
+  float: left;
+  width: 60%;
+  height: 570px;
+  margin-left: 5px;
+}
 .timetable {
-    margin: center;
+  margin-right: 10px;
   display: grid;
+
   grid-template-columns: 100px repeat(7, 1fr); /* 时间段列 + 7天 */
   gap: 1px;
   background-color: #dfdbdba8; /* 表格外边框颜色 */
   border-collapse: collapse; /* 合并单元格边框 (虽然在 grid 布局中不直接起作用，但保留以防将来修改布局方式) */
   width: 90%; /* 确保表格宽度占据父容器 */
   border-radius: 10px;
-  height: 50%;
+  height: 570px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 

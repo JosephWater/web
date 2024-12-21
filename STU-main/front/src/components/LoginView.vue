@@ -1,6 +1,4 @@
-<head>
-  <link rel 
-</head>
+
 <template>
   <div class="login-container">
     <div class="login-background"></div>
@@ -77,7 +75,7 @@ export default {
               // 4. 保存用户信息
               this.$store.commit('setUserInfo', loginRes.data.data);             
               // 5. 跳转
-              this.$router.push('/container/studentList');
+              this.$router.push('/container/HomePage');
               console.log(loginRes.data);
             } else {
               this.$alert("用户名或密码错误", "", {

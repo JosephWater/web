@@ -39,10 +39,10 @@
       <el-container>
         <el-header height=35px class="custom-header" style="text-align: right; font-size: 12px ">
           <el-breadcrumb separator="/">
-            <el-breadcrumb-item :to="{ path: '/' }">首页</el-breadcrumb-item>
-            <el-breadcrumb-item><a href="/">活动管理</a></el-breadcrumb-item>
-            <el-breadcrumb-item>活动列表</el-breadcrumb-item>
-            <el-breadcrumb-item>活动详情</el-breadcrumb-item>
+            <el-breadcrumb-item
+            v-for="(item , index) in $route.matched"
+            :key="index"
+            :to="{ path: item.path }">{{ item.meta.title }}</el-breadcrumb-item>
           </el-breadcrumb>
         </el-header>
 
@@ -198,7 +198,8 @@ export default {
   transition: all 0.3s ease;
   margin: 1px;
   border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-color: #dcdfe6;
+  box-shadow: 0 2px 12px 0 rgba(0, 0, 0, 0.1);
 }
 
 .custom-header:hover {
@@ -216,7 +217,7 @@ export default {
   transition: all 0.3s ease;
   border-radius: 8px;
   margin: 2px;
-  box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  box-shadow:0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .custom-top:hover {
