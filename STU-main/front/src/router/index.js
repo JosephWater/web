@@ -138,6 +138,13 @@ const routes = [
         component: () => import('../views/STUcourseList.vue'),
       },
       {
+        path:'/container/scoreList',
+        component: () => import('../views/scoreListView.vue'),
+        meta:{
+          title:'课程管理'
+        }
+      },
+      {
         path:'/container/activity',
         component: () => import('../views/ActivityView.vue'),
         meta:{

@@ -1,41 +1,41 @@
 <template>
   <div>
   <div class="StuInfo">
-  <el-descriptions class="margin-top" title="个人信息" :column="3" :size="size" border>
+  <el-descriptions class="margin-top" title="个人信息" :column="3"  border>
     <el-descriptions-item>
       <template slot="label">
         <i class="el-icon-user"></i>
-        用户名
+        姓名
       </template>
-      kooriookami
+     {{ studentInfo.person.name }} 
     </el-descriptions-item>
     <el-descriptions-item>
       <template slot="label">
         <i class="el-icon-mobile-phone"></i>
         手机号
       </template>
-      18100000000
+      {{ studentInfo.person.phone }}
     </el-descriptions-item>
     <el-descriptions-item>
       <template slot="label">
         <i class="el-icon-location-outline"></i>
         居住地
       </template>
-      苏州市
+      {{studentInfo.person.address}}
     </el-descriptions-item>
     <el-descriptions-item>
       <template slot="label">
         <i class="el-icon-tickets"></i>
-        备注
+        专业
       </template>
-      <el-tag size="small">学校</el-tag>
+      {{ studentInfo.person.dept }} {{ studentInfo.major }}
     </el-descriptions-item>
     <el-descriptions-item>
       <template slot="label">
         <i class="el-icon-office-building"></i>
-        联系地址
+        邮箱
       </template>
-      江苏省苏州市吴中区吴中大道 1188 号
+      {{studentInfo.person.email }}
     </el-descriptions-item>
   </el-descriptions>
 
@@ -77,7 +77,7 @@
     </div>
   </div>
   <div class="calender">
-    <el-calendar v-model="value">
+    <el-calendar v-model="date">
     </el-calendar>
   </div>
 </div>
@@ -85,13 +85,15 @@
   
   <script>
   import { getStuCourse } from "../../api/coursetable.ts";
+  import { getStudentInfo } from "../../api/login.ts";
   export default {
     data() {
       return {
         days: ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"],
         times: ["第一节", "第二节", "第三节", "第四节", "第五节"],
         courseList: [],
-        date: new Date()
+        date: new Date(),
+        studentInfo:[],
       };
     },
     methods: {
@@ -100,13 +102,24 @@
           const UserInfo = this.$store.getters.getUserInfo;
           const res = await getStuCourse(UserInfo.studentId);
           this.courseList = res.data.data;
-          console.log(res);
+          //console.log(res);
           //console.log("完整课程数据:", this.courseList); // 打印完整数据
           // 打印每个课程的time值，方便检查对应关系
   
         } catch (error) {
           console.error("获取课程列表出错:", error);
         }
+      },
+      async getStuInfo( ){
+        try {
+        const UserInfo = this.$store.getters.getUserInfo;
+        const info = await getStudentInfo(UserInfo.studentId);
+        
+        this.studentInfo = info.data.data;
+        console.log(info);
+      } catch (error) {
+        console.error('获取学生信息出错:', error);
+      }
       },
       getCoursesForTimeAndDay(dayIndex, timeSlot) {
         const filteredCourses = this.courseList.filter((course) => {
@@ -122,6 +135,7 @@
     },
     created() {
       this.getAllStuCourseList();
+      this.getStuInfo();
     },
   };
   </script>

@@ -75,6 +75,7 @@ export default {
         console.log(row)
         if (res.data.code == 1) {
           this.$message.success('退课成功')
+          this.getAllStuCourseList();
 
         } else {
           this.$message.error(res.data.mes)
