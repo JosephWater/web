@@ -16,7 +16,7 @@
         </el-form-item>
  
         <el-form-item label="离校时间">
-          <div align="center" >
+          <div>
          <el-date-picker
           v-model="form.startData"
           type="datetime"
@@ -28,7 +28,7 @@
     </el-form-item>
   
         <el-form-item label="返校时间">
-          <div align="center">
+          <div>
          <el-date-picker
           v-model="form.endData"
           type="datetime"
@@ -69,10 +69,10 @@ export default {
       onSubmit() {
         //console.log('submit!');
         addLeave( this.form ).then((res) =>{
-            if(res.data.data=="添加成功"){
-                this.$message.success('添加成功')
+            if(res.data.data=="申请成功"){
+                this.$message.success('申请成功')
             }else{
-                this.$message.error('添加失败')
+                this.$message.error('申请失败')
             }
             console.log(res)
         })
