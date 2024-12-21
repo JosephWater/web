@@ -1,5 +1,4 @@
 import request from "../utils/request.ts";
-import store from "../store/index.js";
 
 export const getInternshipList = () =>{
     return request({
