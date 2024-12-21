@@ -6,7 +6,12 @@
         <el-button @click="fullScreen()" size="mini" icon="el-icon-full-screen"></el-button>
         <el-button @click="refresh()" size="mini" icon="el-icon-refresh" style="margin-right: 10px"></el-button>
         <template v-if="userInfo.username != '请登录'">
+          <template v-if="userInfo.username != 'admin'">
           <span class="footer-text">你好! {{ studentInfo.person.name }} ({{ userInfo.username }})</span>
+          </template>
+          <template v-if="userInfo.username == 'admin'">
+          <span class="footer-text">你好! {{ userInfo.username }}</span>
+          </template>
             <el-button @click="logout()" type="primary" size="mini" class="footer-button"
               icon="el-icon-switch-button"></el-button>
         </template>
