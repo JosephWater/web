@@ -40,6 +40,23 @@
           <span>荣誉管理</span>
         </el-menu-item>
     </el-submenu>
+    <el-submenu index="3">
+            <template #title>
+              <span> 创新实践管理管理 </span>
+            </template>
+            <el-menu-item index="/container/internshipList">
+              <span>校外实习管理</span>
+            </el-menu-item>
+            <el-menu-item index="/container/innovationList">
+              <span>创新项目管理</span>
+            </el-menu-item>
+            <el-menu-item index="/container/socialpraticeList">
+              <span>社会实践管理</span>
+            </el-menu-item>
+            <el-menu-item index="/container/volunteerList">
+              <span>志愿服务管理</span>
+            </el-menu-item>
+          </el-submenu>
     </el-menu>
   </el-aside>
 </template>
