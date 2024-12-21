@@ -56,14 +56,14 @@
           >
           <template v-if="course.course.courseType == '必修'">
             <div class="course">
-            <div class="course-name">{{ course.course.courseName }}</div>
+            <div class="course-name">{{ course.course.courseName }}<br><br></div>
             <div class="course-details">教师: {{ course.course.teacherName }}</div>
             <div class="course-details">地点: {{ course.course.place }}</div>
             </div>
           </template>  
           <template v-if="course.course.courseType != '必修'">
             <div class="course2">
-            <div class="course-name">{{ course.course.courseName }}</div>
+            <div class="course-name">{{ course.course.courseName }}<br><br></div>
             <div class="course-details">教师: {{ course.course.teacherName }}</div>
             <div class="course-details">地点: {{ course.course.place }}</div>
             </div>

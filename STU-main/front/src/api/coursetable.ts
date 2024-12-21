@@ -19,6 +19,15 @@ export const getCourseList2 = () =>{
         }
     })
 }
+export const getScore = () =>{
+    return request({
+        method:'GET',
+        url:'/courseChoose/getCourseChooseListFromStudentNot',
+        params: {
+            studentId:studentId
+        }
+    })
+}
 //新增和修改
 export const addCourse = (data) =>{
     console.log(data)

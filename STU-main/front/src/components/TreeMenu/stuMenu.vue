@@ -9,17 +9,25 @@
         <el-menu-item index="/container/STUcourseList">
           <span>培养方案</span>
         </el-menu-item>
-        <el-menu-item index="/STUmainPage">
-          <span>我的课表</span>
-        </el-menu-item>
         <el-menu-item index="/container/STUChooseCourse">
           <span>选课管理</span>
         </el-menu-item>
         <el-menu-item index="/container/STUhonour">
           <span>我的荣誉</span>
         </el-menu-item>
-        <el-menu-item index="/container/STULeave">
+         <el-menu-item index="/container/STULeave">
           <span>请假记录</span>
+        </el-menu-item>
+      </el-submenu>
+      <el-submenu index="2">
+        <template #title>
+          <span> 学业管理 </span>
+        </template>
+        <el-menu-item index="/container/STUclassTable">
+          <span>我的课表</span>
+        </el-menu-item>
+        <el-menu-item index="/container/STUscoreList">
+          <span>我的成绩</span>
         </el-menu-item>
       </el-submenu>
 

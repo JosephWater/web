@@ -56,35 +56,42 @@ const routes = [
         path:'/container/teacherList/createTeacher',
         component: () => import('../components/create/createTeacher.vue'),
         meta:{
-          title: '学生管理'
+          title: '教师管理 / 新增教师'
         }
       },
       {
         path:'/container/teacherList/editTeacher',
         component: () => import('../components/edit/editTeacher.vue'),
         meta:{
-          title: '学生管理'
+          title: '教师管理 / 编辑教师'
         }
       },
       {
         path:'/container/courseList',
         component: () => import('../views/CourseListView.vue'),
         meta:{
-          title: '学生管理'
+          title: '教务管理 / 课程管理'
+        }
+      },
+      {
+        path:'/container/STUclassTable',
+        component: () => import('../views/STUclassTable.vue'),
+        meta:{
+          title: '学业管理 / 我的课表'
         }
       },
       {
         path:'/container/courseList/createCourse',
         component: () => import('../components/create/createCourse.vue'),
         meta:{
-          title: '学生管理'
+          title: '教务管理 / 课程管理 / 新建课程'
         }
       },
       {
         path:'/container/courseList/editCourse',
         component: () => import('../components/edit/editCourse.vue'),
         meta:{
-          title: '学生管理'
+          title: '教务管理 / 课程管理 / 编辑课程'
         }
       },
       
@@ -92,14 +99,14 @@ const routes = [
         path:'/container/STUcourse',
         component: () => import('../views/STUcourse.vue'),
         meta:{
-          title: '学生管理'
+          title: '培养管理 / 选课管理 / 已选课程'
         }
       },
       {
         path:'/container/STUcourseList',
         component: () => import('../views/STUcourseList.vue'),
         meta:{
-          title: '学生管理'
+          title: '培养管理 / 培养方案'
         }
       },
       {
@@ -135,7 +142,14 @@ const routes = [
         path:'/container/scoreList',
         component: () => import('../views/scoreListView.vue'),
         meta:{
-          title:'课程管理'
+          title:'教务管理 / 成绩管理'
+        }
+      },
+      {
+        path:'/container/STUscoreList',
+        component: () => import('../views/STUscoreView.vue'),
+        meta:{
+          title:'学业管理 / 我的成绩'
         }
       },
       {
