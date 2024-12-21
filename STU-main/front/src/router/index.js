@@ -53,7 +53,7 @@ const routes = [
       },
       {
         path:'/container/courseList/editCourse',
-        component: () => import('../components/create/createCourse.vue'),
+        component: () => import('../components/edit/editCourse.vue'),
       },
       
       {
@@ -81,6 +81,10 @@ const routes = [
         component: () => import('../views/STUChooseCourse.vue'),
       },
       {
+        path:'/container/STUcourseList',
+        component: () => import('../views/STUcourseList.vue'),
+      },
+      {
         path:'/container/activity',
         component: () => import('../views/ActivityView.vue'),
       },
@@ -91,6 +95,66 @@ const routes = [
       {
         path:'/container/honourList',
         component: () => import('../views/HonourListView.vue'),
+      },
+      {
+        path:'/container/internshipList',
+        component: () => import('../views/InternshipListView.vue'),
+      },
+
+      {
+        path:'/container/internshipList/createInternship',
+        component: () => import('../components/create/createInternship.vue'),
+      },
+
+
+      {
+        path:'/container/innovationList',
+        component: () => import('../views/InnovationListView.vue'),
+      },
+
+      {
+        path:'/container/innovationList/createInnovation',
+        component: () => import('../components/create/createInnovation.vue'),
+      },
+      {
+        path:'/container/socialpraticeList',
+        component: () => import('../views/SocialpraticeListView.vue'),
+      },
+
+      {
+        path:'/container/socialpraticeList/createSocialpratice',
+        component: () => import('../components/create/createSocialpratice.vue'),
+      },
+
+      {
+        path:'/container/volunteerList',
+        component: () => import('../views/VolunteerListView.vue'),
+      },
+
+      {
+        path:'/container/volunteerList/createVolunteer',
+        component: () => import('../components/create/createVolunteer.vue'),
+      },
+
+
+      {
+        path:'/container/stuInternshipList',
+        component: () => import('../views/STUInternshipView.vue'),
+      },
+
+      {
+        path:'/container/stuInnovationList',
+        component: () => import('../views/STUInnovationView.vue'),
+      },
+
+      {
+        path:'/container/stuSocialpraticeList',
+        component: () => import('../views/STUSocialpraticeView.vue'),
+      },
+
+      {
+        path:'/container/stuVolunteerList',
+        component: () => import('../views/STUVolunteerView.vue'),
       },
 
     ]

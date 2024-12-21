@@ -1,18 +1,39 @@
 import request from "../utils/request.ts";
-//import store from '@/store'
+import store from '@/store'
 //import jwt_decode from "jwt-decode";
+const studentId= store.state.userInfo.studentId;
 export const getCourseList = () =>{
     return request({
         method:'GET',
         url:'/course/getCourseList',
+        params: {
+        }
+    })
+}
+export const getCourseList2 = () =>{
+    return request({
+        method:'GET',
+        url:'/courseChoose/getCourseChooseListFromStudentNot',
+        params: {
+            studentId:studentId
+        }
     })
 }
 //新增和修改
 export const addCourse = (data) =>{
+    console.log(data)
     return request({
         method: 'POST',
         url: '/course/addCourse',
-        data
+        data:data
+    })
+}
+export const editCourse = (data) =>{
+    console.log(data)
+    return request({
+        method: 'POST',
+        url: '/course/updateCourse',
+        data:data
     })
 }
 //选课
@@ -42,5 +63,12 @@ export const getStuCourse = (id) =>{
         method: 'GET',
         url:'/courseChoose/getCourseChooseListFromStudent',
         params:{studentId: id}
+    })
+}
+export const deleteCourse = (data) => {
+    return request({
+        method: 'POST',
+        url: '/course/deleteCourse',
+        data:data
     })
 }

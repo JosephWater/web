@@ -7,7 +7,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state:{
         jwt:'',
-        userInfo: null
+        userInfo: null,
+        courseInfo:null
     },
     getters:{
         getUserId: state => state.userInfo ? state.userInfo.personId : null,
@@ -20,6 +21,9 @@ export default new Vuex.Store({
         setUserInfo(state, info) {  // 添加setUserInfo
             state.userInfo = info
         },
+        setCourseInfo(state, info) {  // 添加setUserInfo
+            state.courseInfo = info
+        },
         Statelogout(state) { 
             state.jwt = ''; 
             state.userInfo = null; 
@@ -27,6 +31,7 @@ export default new Vuex.Store({
         }
         
     },
+
     actions:{
     },
     modules:{
