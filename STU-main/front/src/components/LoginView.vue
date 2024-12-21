@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-
-=======
->>>>>>> 408ba2fab9ad4bf7f7d3543c15217e4ab9f76346
 <template>
   <div class="login-container">
     <div class="login-background"></div>
