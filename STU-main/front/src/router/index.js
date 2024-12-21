@@ -44,7 +44,13 @@ const routes = [
           title: '学生管理 / 编辑学生'
         }
       },
-
+      {
+        path:'/container/studentList/chooseStudent',
+        component: () => import('../components/StuChooseView.vue'),
+        meta:{
+          title: '学生管理 / 编辑学生'
+        }
+      },
       {
         path:'/container/teacherList',
         component: () => import('../views/TeacherListView.vue'),

@@ -41,7 +41,9 @@
           <el-button @click="edit(scoped.row)" size="mini"
                      icon="el-icon-edit"></el-button>
           <el-button @click="$router.push('/container/studentList/editStudent')" size="mini"
-                     icon="el-icon-more"></el-button>
+          icon="el-icon-more"></el-button>
+          <el-button @click="choose(scoped.row)" size="mini"
+                     icon="el-icon-date"></el-button>
           <el-button @click="deleteClick(scoped.row)" type="danger" size="mini" icon="el-icon-delete"></el-button>
         </div>
       </el-table-column>
@@ -79,6 +81,11 @@ export default {
       console.log(row)
       this.$store.commit('setStudentInfo', row);
       this.$router.push('/container/studentList/editStudent')
+    },
+    choose(row){
+      console.log(row)
+      this.$store.commit('setStudentInfo', row);
+      this.$router.push('/container/studentList/chooseStudent')
     },
     async getAllStudentList() {
       try {
