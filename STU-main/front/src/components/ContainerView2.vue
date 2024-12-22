@@ -3,8 +3,9 @@
     <el-footer height="50px" class="custom-top">
       <img src="../../public/img/logo.png" alt="TUP Logo" class="footer-logo">
       <div class="footer-right-content">
-        <el-button @click="fullScreen()" size="mini" icon="el-icon-full-screen"></el-button>
-        <el-button @click="refresh()" size="mini" icon="el-icon-refresh" style="margin-right: 10px"></el-button>
+        <el-button @click="refresh()" size="mini" icon="el-icon-refresh" style="margin-right: 5px"></el-button>
+        <el-button @click="$router.push('/container/editPassword')" size="mini" icon="el-icon-unlock" style="margin-right: 5px"></el-button>
+        <el-button @click="fullScreen()" size="mini" icon="el-icon-full-screen" style="margin-right: 10px"></el-button>
         <template v-if="userInfo.username != '请登录'">
           <template v-if="userInfo.username != 'admin'">
           <span class="footer-text">你好! {{ studentInfo.person.name }} ({{ userInfo.username }})</span>

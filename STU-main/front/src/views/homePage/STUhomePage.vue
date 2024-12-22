@@ -1,165 +1,166 @@
 <template>
   <div>
-  <div class="StuInfo">
-  <el-descriptions class="margin-top" title="个人信息" :column="3"  border>
-    <el-descriptions-item>
-      <template slot="label">
-        <i class="el-icon-user"></i>
-        姓名
-      </template>
-     {{ studentInfo.person.name }} 
-    </el-descriptions-item>
-    <el-descriptions-item>
-      <template slot="label">
-        <i class="el-icon-mobile-phone"></i>
-        手机号
-      </template>
-      {{ studentInfo.person.phone }}
-    </el-descriptions-item>
-    <el-descriptions-item>
-      <template slot="label">
-        <i class="el-icon-location-outline"></i>
-        居住地
-      </template>
-      {{studentInfo.person.address}}
-    </el-descriptions-item>
-    <el-descriptions-item>
-      <template slot="label">
-        <i class="el-icon-tickets"></i>
-        专业
-      </template>
-      {{ studentInfo.person.dept }} {{ studentInfo.major }}
-    </el-descriptions-item>
-    <el-descriptions-item>
-      <template slot="label">
-        <i class="el-icon-office-building"></i>
-        邮箱
-      </template>
-      {{studentInfo.person.email }}
-    </el-descriptions-item>
-  </el-descriptions>
-
-  </div >
-  <div class="classtable">
-    <div class="timetable">
-      <div class="header">
-        <div class="cell"></div>
-        <div class="cell" v-for="(day, dayIndex) in days" :key="dayIndex">{{ day }}</div>
-      </div>
-      <div class="row" v-for="(time, timeIndex) in times" :key="timeIndex">
-        <div class="cell time">{{ time }}</div>
-        <div class="cell" v-for="(day, dayIndex) in days" :key="dayIndex">
-          <div
-            v-for="course in getCoursesForTimeAndDay(dayIndex + 1, timeIndex + 1)"
-            :key="course.courseId"
-            
-          >
-          <template v-if="course.course.courseType == '必修'">
-            <div class="course">
-            <div class="course-name">{{ course.course.courseName }}<br><br></div>
-            <div class="course-details">教师: {{ course.course.teacherName }}</div>
-            <div class="course-details">地点: {{ course.course.place }}</div>
-            </div>
-          </template>  
-          <template v-if="course.course.courseType != '必修'">
-            <div class="course2">
-            <div class="course-name">{{ course.course.courseName }}<br><br></div>
-            <div class="course-details">教师: {{ course.course.teacherName }}</div>
-            <div class="course-details">地点: {{ course.course.place }}</div>
-            </div>
+    <div class="StuInfo">
+      <el-descriptions class="margin-top" title="个人信息" :column="3" border>
+        <el-descriptions-item>
+          <template slot="label">
+            <i class="el-icon-user"></i>
+            姓名
           </template>
-          </div>
-          <div v-if="getCoursesForTimeAndDay(dayIndex + 1, timeIndex + 1).length === 0" class="no-course">
-              
+          {{ studentInfo.person.name }}
+        </el-descriptions-item>
+        <el-descriptions-item>
+          <template slot="label">
+            <i class="el-icon-mobile-phone"></i>
+            手机号
+          </template>
+          {{ studentInfo.person.phone }}
+        </el-descriptions-item>
+        <el-descriptions-item>
+          <template slot="label">
+            <i class="el-icon-location-outline"></i>
+            居住地
+          </template>
+          {{ studentInfo.person.address }}
+        </el-descriptions-item>
+        <el-descriptions-item>
+          <template slot="label">
+            <i class="el-icon-tickets"></i>
+            专业
+          </template>
+          {{ studentInfo.person.dept }} {{ studentInfo.major }}
+        </el-descriptions-item>
+        <el-descriptions-item>
+          <template slot="label">
+            <i class="el-icon-office-building"></i>
+            邮箱
+          </template>
+          {{ studentInfo.person.email }}
+        </el-descriptions-item>
+      </el-descriptions>
+
+    </div>
+    <div class="classtable">
+      <div class="timetable">
+        <div class="header">
+          <div class="cell"></div>
+          <div class="cell" v-for="(day, dayIndex) in days" :key="dayIndex">{{ day }}</div>
+        </div>
+        <div class="row" v-for="(time, timeIndex) in times" :key="timeIndex">
+          <div class="cell time">{{ time }}</div>
+          <div class="cell" v-for="(day, dayIndex) in days" :key="dayIndex">
+            <div
+                v-for="course in getCoursesForTimeAndDay(dayIndex + 1, timeIndex + 1)"
+                :key="course.courseId">
+              <template v-if="course.course.courseType == '必修'">
+                <div class="course">
+                  <div class="course-name">{{ course.course.courseName }}<br><br></div>
+                  <div class="course-details">教师: {{ course.course.teacherName }}</div>
+                  <div class="course-details">地点: {{ course.course.place }}</div>
+                </div>
+              </template>
+              <template v-if="course.course.courseType != '必修'">
+                <div class="course2">
+                  <div class="course-name">{{ course.course.courseName }}<br><br></div>
+                  <div class="course-details">教师: {{ course.course.teacherName }}</div>
+                  <div class="course-details">地点: {{ course.course.place }}</div>
+                </div>
+              </template>
+            </div>
+            <div v-if="getCoursesForTimeAndDay(dayIndex + 1, timeIndex + 1).length === 0" class="no-course">
+
+            </div>
           </div>
         </div>
       </div>
     </div>
+    <div class="calender">
+      <el-calendar v-model="date">
+      </el-calendar>
+    </div>
   </div>
-  <div class="calender">
-    <el-calendar v-model="date">
-    </el-calendar>
-  </div>
-</div>
-  </template>
-  
-  <script>
-  import { getStuCourse } from "../../api/coursetable.ts";
-  import { getStudentInfo } from "../../api/login.ts";
-  export default {
-    data() {
-      return {
-        days: ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"],
-        times: ["第一节", "第二节", "第三节", "第四节", "第五节"],
-        courseList: [],
-        date: new Date(),
-        studentInfo:[],
-      };
+</template>
+
+<script>
+import {getStuCourse} from "../../api/coursetable.ts";
+import {getStudentInfo} from "../../api/login.ts";
+
+export default {
+  data() {
+    return {
+      days: ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"],
+      times: ["第一节", "第二节", "第三节", "第四节", "第五节"],
+      courseList: [],
+      date: new Date(),
+      studentInfo: [],
+    };
+  },
+  methods: {
+    async getAllStuCourseList() {
+      try {
+        const UserInfo = this.$store.getters.getUserInfo;
+        const res = await getStuCourse(UserInfo.studentId);
+        this.courseList = res.data.data;
+        //console.log(res);
+        //console.log("完整课程数据:", this.courseList); // 打印完整数据
+        // 打印每个课程的time值，方便检查对应关系
+
+      } catch (error) {
+        console.error("获取课程列表出错:", error);
+      }
     },
-    methods: {
-      async getAllStuCourseList() {
-        try {
-          const UserInfo = this.$store.getters.getUserInfo;
-          const res = await getStuCourse(UserInfo.studentId);
-          this.courseList = res.data.data;
-          //console.log(res);
-          //console.log("完整课程数据:", this.courseList); // 打印完整数据
-          // 打印每个课程的time值，方便检查对应关系
-  
-        } catch (error) {
-          console.error("获取课程列表出错:", error);
-        }
-      },
-      async getStuInfo( ){
-        try {
+    async getStuInfo() {
+      try {
         const UserInfo = this.$store.getters.getUserInfo;
         const info = await getStudentInfo(UserInfo.studentId);
-        
+
         this.studentInfo = info.data.data;
         console.log(info);
       } catch (error) {
         console.error('获取学生信息出错:', error);
       }
-      },
-      getCoursesForTimeAndDay(dayIndex, timeSlot) {
-        const filteredCourses = this.courseList.filter((course) => {
-          const time = course.course.time;
-          const courseDay = Math.floor(time / 10);
-          const courseTime = time % 10;
-          //console.log(`dayIndex:${dayIndex}, timeSlot:${timeSlot}, courseDay:${courseDay}, courseTime:${courseTime}, courseName:${course.course.courseName}`);
-          return courseDay === dayIndex && courseTime === timeSlot;
-        });
-          //console.log(`filteredCourses:`,filteredCourses);
-        return filteredCourses;
-      },
     },
-    created() {
-      this.getAllStuCourseList();
-      this.getStuInfo();
+    getCoursesForTimeAndDay(dayIndex, timeSlot) {
+      const filteredCourses = this.courseList.filter((course) => {
+        const time = course.course.time;
+        const courseDay = Math.floor(time / 10);
+        const courseTime = time % 10;
+        //console.log(`dayIndex:${dayIndex}, timeSlot:${timeSlot}, courseDay:${courseDay}, courseTime:${courseTime}, courseName:${course.course.courseName}`);
+        return courseDay === dayIndex && courseTime === timeSlot;
+      });
+      //console.log(`filteredCourses:`,filteredCourses);
+      return filteredCourses;
     },
-  };
-  </script>
+  },
+  created() {
+    this.getAllStuCourseList();
+    this.getStuInfo();
+  },
+};
+</script>
 
 <style scoped>
-.calender{
+.calender {
   padding: 10px 20px 15px 1px;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(26, 115, 232, 0.2);
   margin-bottom: 30px;
-  float:right;
+  float: right;
   width: 35%;
   height: 585px;
   margin-left: 5px;
 }
-.StuInfo{
+
+.StuInfo {
   padding: 10px 10px 15px 10px;
   border-radius: 12px;
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(26, 115, 232, 0.2);
   margin-bottom: 30px;
 }
-.classtable{
+
+.classtable {
   padding: 10px 0px 30px 10px;
   border-radius: 12px;
   overflow: hidden;
@@ -169,6 +170,7 @@
   height: 570px;
   margin-left: 5px;
 }
+
 .timetable {
   margin-right: 10px;
   display: grid;
@@ -238,12 +240,13 @@
   box-sizing: border-box; /* 包含 padding 和 border */
   box-shadow: 0 8px 8px rgba(0, 0, 0, 0.1);
 }
+
 .course:nth-child(even) { /* 偶数课程背景色略微加深 */
   background-color: #d0e9f2;
 }
 
 .course-name {
-  
+
   margin-bottom: 2px;
 }
 
@@ -254,11 +257,11 @@
 }
 
 .no-course {
-    text-align: center;
-    color: grey;
-    height: 100%;
-    display: flex; /* 使用 Flexbox 布局 */
-    justify-content: center; /* 水平居中 */
-    align-items: center; /* 垂直居中 */
+  text-align: center;
+  color: grey;
+  height: 100%;
+  display: flex; /* 使用 Flexbox 布局 */
+  justify-content: center; /* 水平居中 */
+  align-items: center; /* 垂直居中 */
 }
 </style>

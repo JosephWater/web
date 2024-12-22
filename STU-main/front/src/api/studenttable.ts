@@ -37,3 +37,16 @@ export const deleteStudent = (data) => {
         data:data
     })
 }
+export const password = (data) => {
+    console.log(data)
+
+    return request({
+        method: 'GET',
+        url: '/student/password',
+        params: {
+            personId: data.personId,
+            old: data.old,
+            newp: data.newp
+        },
+    })
+}

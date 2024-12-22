@@ -1,58 +1,68 @@
 <template>
   <div>
-    <el-table :data="scoreList" border style="width: 100%">
-      <el-table-column fixed prop="courseNum" label="课序号" width="100">
-      </el-table-column>
+    <div class="classtable">
+      <el-button @click="$router.push('/container/scoreList')" style="margin-bottom: 10px">返回</el-button>
 
-      <el-table-column prop="courseName" label="课程名称" width="100">
-      </el-table-column>
-      <el-table-column prop="openingUnit" label="开课单位" width="100">
-      </el-table-column>
-      <el-table-column prop="totalHours" label="总学时" width="100">
-      </el-table-column>
-      <el-table-column prop="credits" label="学分" width="100">
-      </el-table-column>
-      <el-table-column prop="courseType" label="课程类型" width="100">
-      </el-table-column>
-      <el-table-column prop="place" label="上课地点" width="100">
-      </el-table-column>
-      <el-table-column prop="teacherName" label="任课教师" width="100">
-      </el-table-column>
-      <el-table-column prop="pre1" label="平时成绩占比" width="120" :formatter="formatPercentage">
-      </el-table-column>
-      <el-table-column prop="pre2" label="期末成绩占比" width="120" :formatter="formatPercentage">
-      </el-table-column>
-      <el-table-column prop="time" label="上课时间" width="100" :formatter="formatPercentage2">
-      </el-table-column>
+      <el-dialog :visible.sync="dialogVisible" title="修改成绩">
+        <el-form :model="form">
 
-
-      <!--    <el-table-column fixed="right" label="操作" width="100">
-           <template slot-scope="scope">
-             <el-button @click="deleteClick(scope.row)" type="danger" size="mini"
-               >删除</el-button>
-             <el-button  @click="$router.push('/container/courseList/createCourse')"  size="mini"
-               >编辑</el-button>
-           </template>
-         </el-table-column> -->
-      <el-table-column label="操作" align="center">
-        <div align="center" slot-scope="scoped">
-          <el-button @click="edit(scoped.row)" size="mini"
-                     icon="el-icon-edit"></el-button>
-<!--          <el-button @click="deleteClick(scoped.row)" type="danger" size="mini" icon="el-icon-delete"></el-button>-->
-        </div>
-      </el-table-column>
-
-    </el-table>
+          <el-form-item label="平时成绩">
+            <el-input-number v-model="form.score1" @change="handleChange" :min="0" :max="100" :step="5"
+            ></el-input-number>
+          </el-form-item>
+          <el-form-item label="考试成绩">
+            <el-input-number v-model="form.score2" @change="handleChange" :min="0" :max="100" :step="5"
+            ></el-input-number>
+          </el-form-item>
+        </el-form>
+        <span slot="footer" class="dialog-footer">
+        <el-button @click="dialogVisible = false">取消</el-button>
+        <el-button type="primary" @click="handleConfirm">确定</el-button>
+      </span>
+      </el-dialog>
+      <el-table :data="scoreList" border style="width: 100%">
+        <el-table-column prop="course.courseName" label="课程名称" width="100">
+        </el-table-column>
+        <el-table-column prop="course.courseNum" label="课序号" width="100">
+        </el-table-column>
+        <el-table-column prop="person.name" label="学生" width="100">
+        </el-table-column>
+        <el-table-column prop="person.username" label="学号" width="110">
+        </el-table-column>
+        <el-table-column prop="score1" label="平时成绩" width="80">
+        </el-table-column>
+        <el-table-column prop="score2" label="考试成绩" width="80">
+        </el-table-column>
+        <el-table-column prop="score3" label="总成绩" width="80">
+        </el-table-column>
+        <el-table-column label="操作" align="center">
+          <div align="center" slot-scope="scoped">
+            <el-button @click="edit(scoped.row)" size="mini" icon="el-icon-edit"></el-button>
+            <el-button @click="deleteClick(scoped.row)" type="danger" size="mini" icon="el-icon-delete"></el-button>
+          </div>
+        </el-table-column>
+      </el-table>
+    </div>
+    <div class="classtable1">
+      <chart/>
+    </div>
   </div>
 </template>
 <script>
-
-import {getScore} from "../../api/score.ts";
+import {addScore, deleteScore, getScore} from "../../api/score.ts";
+import chart from "../../utils/chart.vue";
 
 export default {
   data() {
     return {
-      scoreList: []
+      scoreList: [],
+      id: '',
+      dialogVisible: false,
+      select: '',
+      form: {
+        score1: '',
+        score2: ''
+      },
     }
   },
   computed: {
@@ -63,27 +73,50 @@ export default {
     }
     // 您还可以在这里定义其他计算属性
   },
+  components: {
+    chart,
+  },
   methods: {
-    edit(row){
-      console.log(row)
-      this.$store.commit('setCourseInfo', row);
-      this.$router.push('/container/courseList/editCourse')
+    handleConfirm() {
+      addScore({"id": this.id, "score1": this.form.score1, "score2": this.form.score2}).then((res) => {
+        if (res.data.data == "添加成功") {
+          this.$message.success('添加成功'),
+              this.getAllCourseList(),
+              this.dialogVisible = false
+        } else {
+          this.$message.error(res.data.msg)
+        }
+        console.log(res.data)
+      })
     },
-    formatPercentage(row, column, cellValue) {
-      return (cellValue)+ '%';
-    },
-    formatPercentage2(row, column, cellValue) {
-      return '周'+cellValue[0]+'第'+cellValue%10+'节课';
-    },
-    deleteClick(){
 
+    edit(row) {
+      this.dialogVisible = true;
+      this.form = {
+        score1: 0,
+        score2: 0
+      };
+      this.id = row.id;
+    },
+    deleteClick(row) {
+      this.$confirm('是否确认删除', '删除提示').then(() => {
+        deleteScore(row).then(() => {
+          this.getAllCourseList();
+          this.$message.success('删除成功')
+        })
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消删除'
+        });
+      });
     },
     async getAllCourseList() {
       try {
-        console.log(this.courseInfo);
         const res = await getScore(this.courseInfo.id);
-        this.scoreList = res.data.data.rows;
         console.log(res);
+        this.scoreList = res.data.data;
+        console.log(this.scoreList);
       } catch (error) {
         console.error('获取课程列表出错:', error);
       }
@@ -96,3 +129,23 @@ export default {
 }
 
 </script>
+<style scoped>
+.classtable {
+  margin :0 17px 0 0;
+  padding: 10px 20px 0px 20px;
+  border-radius: 12px;
+  /*overflow: hidden;*/
+  box-shadow: 0 4px 12px rgba(26, 115, 232, 0.2);
+  float: left;
+  width: 59%;
+  height: 800px;
+}
+.classtable1 {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(26, 115, 232, 0.2);
+  float: left;
+  width: 35%;
+  height: 400px;
+}
+</style>

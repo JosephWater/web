@@ -1,78 +1,107 @@
 <template>
   <div class="login-container">
-    <div class="login-background"></div>
     <div class="login-box">
       <h2 class="login-title">欢迎登录</h2>
       <el-form
-        :model="loginForm"
-        :rules="rules"
-        ref="loginForm"
-        label-width="100px"
-        class="login-form"
-        label-position="top"
-        text-align: left
-        
+          :model="loginForm"
+          :rules="rules"
+          ref="loginForm"
+          label-width="100px"
+          class="login-form"
+          label-position="top"
+          text-align: left
+
       >
         <el-form-item label="用户名" prop="username" class="custom-username-field">
           <el-input
-            v-model="loginForm.username"
-            prefix-icon="el-icon-user"
-            autocomplete="off"
-            class="input-with-focus"
+              v-model="loginForm.username"
+              prefix-icon="el-icon-user"
+              autocomplete="off"
+              class="input-with-focus"
           ></el-input>
         </el-form-item>
-        <el-form-item label="密码" prop="password" >
+        <el-form-item label="密码" prop="password">
           <el-input
-            type="password"
-            v-model="loginForm.password"
-            prefix-icon="el-icon-lock"
-            autocomplete="off"
-            class="input-with-focus"
+              type="password"
+              v-model="loginForm.password"
+              prefix-icon="el-icon-lock"
+              autocomplete="off"
+              class="input-with-focus"
           ></el-input>
         </el-form-item>
         <el-form-item>
           <el-button
-            type="primary"
-            @click="submitForm('loginForm')"
-            class="login-button">登录
-            </el-button>
+              type="primary"
+              @click="submitForm('loginForm')"
+              class="login-button">登录
+          </el-button>
+        </el-form-item>
+      </el-form>
+    </div>
+    <div class="login-box2">
+      <h2 class="login-title">注册</h2>
+      <el-form :model="form">
+        <el-form-item label="身份">
+          <el-select v-model="form.type" placeholder="请选择身份">
+            <el-option label="教师" value="1"></el-option>
+            <el-option label="学生" value="2"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="平时成绩">
+          <el-input v-model="form.score1"></el-input>
+        </el-form-item>
+        <el-form-item label="平时成绩">
+          <el-input v-model="form.score1"></el-input>
+        </el-form-item>
+        <el-form-item>
+          <el-button
+              type="primary"
+              @click="submitForm('loginForm')"
+              class="login-button">登录
+          </el-button>
         </el-form-item>
       </el-form>
     </div>
   </div>
-</template>  
-  
+</template>
+
 <script>
-import {login } from "../api/login.ts";
+import {login} from "../api/login.ts";
 
 export default {
   data() {
     return {
+      form: {
+        score1: '',
+        score2: '',
+        type:''
+      },
       loginForm: {
         username: "",
         password: "",
+        hover: false
       },
       rules: {
         username: [
-          { required: true, message: "请输入用户名", trigger: "blur" },
+          {required: true, message: "请输入用户名", trigger: "blur"},
         ],
-        password: [{ required: true, message: "请输入密码", trigger: "blur" }],
+        password: [{required: true, message: "请输入密码", trigger: "blur"}],
       },
     };
   },
   methods: {
     submitForm(formName) {
-      this.$refs[formName].validate(async(valid) => {
+      this.$refs[formName].validate(async (valid) => {
         if (valid) {
           try {
             // 1. 使用封装的登录方法
             const loginRes = await login(this.loginForm);
             if (loginRes.data.code === 1) {
               // 2. 保存JWT
-              this.$store.commit('setJwt', loginRes.data.data.jwt);   
-              localStorage.setItem('jwt', loginRes.data.data.jwt);           
+              this.$store.commit('setJwt', loginRes.data.data.jwt);
+              localStorage.setItem('jwt', loginRes.data.data.jwt);
               // 4. 保存用户信息
-              this.$store.commit('setUserInfo', loginRes.data.data);             
+              this.$store.commit('setUserInfo', loginRes.data.data);
               // 5. 跳转
               this.$router.push('/container/HomePage');
               console.log(loginRes.data);
@@ -86,7 +115,7 @@ export default {
             this.$alert("登录失败，请稍后重试", "", {
               confirmButtonText: "确定"
             });
-          }          
+          }
         } else {
           console.log("error submit!!");
           return false;
@@ -95,11 +124,11 @@ export default {
     },
   },
 };
-</script>  
-  
+</script>
+
 <style scoped>
 .login-container {
-  background-image: url(../assets/loginbackground.png);
+  background-image: url(../assets/pika.png);
   background-size: cover;
   position: relative;
   width: 100%;
@@ -120,7 +149,7 @@ export default {
 }
 
 .background-image {
-  
+
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -130,9 +159,25 @@ export default {
 
   position: absolute;
   top: 50%;
-  left: 50%;
+  left: 36%;
   transform: translate(-50%, -50%);
-  width: 500px;
+  width: 300px;
+  padding: 40px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  background-color: rgba(255, 255, 255, 0.541);
+  border-radius: 12px;
+  text-align: center;
+  z-index: 1;
+}
+
+.login-box2 {
+
+  position: absolute;
+  top: 50%;
+  left: 64%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 381px;
   padding: 40px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   background-color: rgba(255, 255, 255, 0.541);
@@ -153,8 +198,9 @@ export default {
   margin-bottom: 24px;
   text-align: left;
 }
+
 .login-form.el-form-item__label {
-  font-size: 100px;  
+  font-size: 100px;
   font-weight: bold; /* 可选：设置字体粗细 */
   color: #09fb36; /* 可选：设置字体颜色 */
 }
@@ -177,7 +223,7 @@ export default {
 }
 
 .login-button:hover {
-  background-color: #66b1ff; 
+  background-color: #66b1ff;
   border-color: #66b1ff;
 }
 
@@ -195,7 +241,9 @@ export default {
 .register-link:hover {
   color: #66b1ff;
 }
+
 .custom-username-field .el-form-item__label {
   font-size: 20px; /* 修改标签的字体大小 */
 }
+
 </style>

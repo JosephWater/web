@@ -1,7 +1,10 @@
 <template>
   <el-aside>
     <el-menu router unique-opened>
-      <el-submenu index="1">
+      <el-menu-item index="/container/HomePage">
+        <span>我的主页</span>
+      </el-menu-item>
+      <el-submenu index="2">
         <template #title>
           <span>教务管理</span>
         </template>
@@ -12,7 +15,7 @@
           <span>成绩管理</span>
         </el-menu-item>
       </el-submenu>
-      <el-submenu index="2">
+      <el-submenu index="3">
         <template #title>
           <span> 人员管理 </span>
         </template>
@@ -23,7 +26,7 @@
           <span>教师管理</span>
         </el-menu-item>
       </el-submenu>
-      <el-submenu index="3">
+      <el-submenu index="4">
         <template #title>
           <span>学生事项</span>
         </template>
@@ -37,7 +40,7 @@
           <span>荣誉管理</span>
         </el-menu-item>
       </el-submenu>
-      <el-submenu index="4">
+      <el-submenu index="5">
         <template #title>
           <span> 创新实践管理管理 </span>
         </template>
