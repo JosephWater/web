@@ -31,11 +31,11 @@
       <el-button @click="research" slot="append" icon="el-icon-search"></el-button>
     </div>
     <el-table :data="activityList" border="">
-      <el-table-column fixed prop="name" label="活动名称" width="100">
+      <el-table-column fixed prop="name" label="活动名称" width="90">
       </el-table-column>
-      <el-table-column fixed prop="num" label="活动编号" width="100">
+      <el-table-column fixed prop="num" label="活动编号" width="90">
       </el-table-column>
-      <el-table-column prop="activityType" label="活动类型" width="120">
+      <el-table-column prop="activityType" label="活动类型" width="100">
       </el-table-column>
       <el-table-column prop="organizationalUnit" label="组织单位" width="100">
       </el-table-column>
@@ -43,11 +43,11 @@
       </el-table-column>
       <el-table-column prop="endData" label="结束日期" width="100">
       </el-table-column>
-      <el-table-column prop="studentName" label="申请人" width="100">
+      <el-table-column prop="studentName" label="申请人" width="80">
       </el-table-column>
       <el-table-column prop="studentNum" label="学号" width="100">
       </el-table-column>
-      <el-table-column prop="teacherName" label="审批人" width="100">
+      <el-table-column prop="teacherName" label="审批人" width="80">
       </el-table-column>
       <el-table-column prop="teacherNum" label="审批人账号" width="100">
       </el-table-column>
