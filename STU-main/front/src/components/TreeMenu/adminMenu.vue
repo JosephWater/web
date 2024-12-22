@@ -36,9 +36,6 @@
         <el-menu-item index="/container/leaveList/leave">
           <span>请假管理</span>
         </el-menu-item>
-        <el-menu-item index="/container/teacherList">
-          <span>消费管理</span>
-        </el-menu-item>
         <el-menu-item index="/container/honourList">
           <span>荣誉管理</span>
         </el-menu-item>

@@ -253,16 +253,27 @@ const routes = [
                 component: () => import('../views/STUVolunteerView.vue'),
             },
 
-        ]
-    },
-    {
-        path: '/',
-        redirect: '/login'
-    },
-    {
-        path: '*',
-        redirect: '/404'
-    }
+    
+      {
+        path:'/container/honourList/editHonour',
+        component: () => import('../components/edit/editHonour.vue'),
+      },
+      
+      {
+        path:'/container/studentleaveList/editStudentleave',
+        component: () => import('../components/edit/editLeave.vue'),
+      },
+     
+    ]
+  },
+  {
+    path:'/',
+    redirect: '/login'
+  },
+  {
+    path:'*',
+    redirect: '/404'
+  }
 ]
 
 const router = new VueRouter({

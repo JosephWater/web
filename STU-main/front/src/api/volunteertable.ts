@@ -10,7 +10,7 @@ export const getVolunteerList = () =>{
 export const getStudentVolunteerList = (id) =>{
     return request({
         method:'GET',
-        url:'/internship/getStudentVolunteerList',
+        url:'/volunteer/getStudentVolunteerList',
         params:{studentId: id}
     })
 }

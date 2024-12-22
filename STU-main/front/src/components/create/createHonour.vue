@@ -1,12 +1,13 @@
 <template>
     <el-form ref="form" :model="form" label-width="80px">
 
-        <el-form-item label="学生学号">
-            <el-input v-model="form.studentId"></el-input>
-        </el-form-item>
-        <el-form-item label="学生姓名">
+      <el-form-item label="学生姓名">
             <el-input v-model="form.studentName"></el-input>
         </el-form-item>
+        <el-form-item label="学生学号">
+            <el-input v-model="form.studentNum"></el-input>
+        </el-form-item>
+        
         <el-form-item label="荣誉等级">
             <el-select v-model="form.honorLevel" placeholder="请选择荣誉等级">
               <el-option label="院级" value="院级"></el-option>
@@ -28,10 +29,11 @@
           <div>
          <el-date-picker
           v-model="form.time"
-          type="datetime"
+          type="date"
             placeholder="选择获奖时间"
           align="right"
-          :picker-options="pickerOptions">
+          :picker-options="pickerOptions"
+          value-format="yyyy-MM-dd">
         </el-date-picker>
       </div>
     </el-form-item>
@@ -43,7 +45,7 @@
         
       <el-form-item>
         <el-button type="primary" @click="onSubmit">立即创建</el-button>
-        <el-button>取消</el-button>
+        <el-button @click="back">取消</el-button>
     </el-form-item>
     </el-form>
 
@@ -55,11 +57,11 @@ export default {
     data() {
       return {
         form:{
-          studentNum:null,
-        studentName: null,
-        honorLevel: null,
+          studentNum:'',
+        studentName: '',
+        honorLevel: '',
         name: null,
-        time:null,
+        time:'',
         
         
                 
@@ -67,13 +69,17 @@ export default {
       }
     },
     methods: {
+      back(){
+        this.$router.push('/container/honourList')
+      },
       onSubmit() {
         //console.log('submit!');
-        addHonour( this.form ).then((res) =>{
+        addHonour(this.form).then((res) =>{
             if(res.data.data=="添加成功"){
-                this.$message.success('添加成功')
+                this.$message.success('添加成功');
+                this.$router.push('/container/honourList')
             }else{
-                this.$message.error('添加失败')
+                this.$message.error(res.data.msg)
             }
             console.log(res)
         })

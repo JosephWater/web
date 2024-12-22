@@ -1,5 +1,5 @@
 <template>
-    <el-form ref="form" :model="form" label-width="80px">
+    <el-form ref="form" :model="form" label-width="160px">
 
         <el-form-item label="学生姓名">
             <el-input v-model="form.studentName"></el-input>
@@ -17,10 +17,18 @@
             <el-input v-model="form.content" > </el-input>
         </el-form-item>
         <el-form-item label="志愿服务日期">
-            <el-input v-model="form.date" > </el-input>
+            <el-date-picker
+          v-model="form.date"
+          type="date"
+            placeholder="选择服务日期"
+          align="right"
+          :picker-options="pickerOptions"
+          value-format="yyyy-MM-dd">
+        </el-date-picker>
         </el-form-item>
         <el-form-item label="志愿时长">
-            <el-input v-model="form.hour" > </el-input>
+          <el-input-number v-model="form.hour" @change="handleChange" :min="0" :max="10"> </el-input-number>
+    
         </el-form-item>
         <el-form-item label="证明人">
             <el-input v-model="form.certifier" > </el-input>
@@ -28,7 +36,10 @@
         <el-form-item label="志愿服务期间评价情况">
             <el-input v-model="form.evaluate" > </el-input>
         </el-form-item>
-
+        <el-form-item>
+        <el-button type="primary" @click="onSubmit">立即创建</el-button>
+        <el-button @click="back">取消</el-button>
+    </el-form-item>
         
     </el-form>
 

@@ -34,6 +34,12 @@ export default new Vuex.Store({
         setStudentInfo(state, info) {  // 添加setUserInfo
             state.studentInfo = info
         },
+        setHonourInfo(state, info) {  // 添加setUserInfo
+            state.honourInfo = info
+        },
+        setStudentleaveInfo(state, info) {  // 添加setUserInfo
+            state.studentleaveInfo = info
+        },
         Statelogout(state) { 
             state.jwt = ''; 
             state.userInfo = null; 

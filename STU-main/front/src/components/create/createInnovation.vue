@@ -1,5 +1,5 @@
 <template>
-    <el-form ref="form" :model="form" label-width="80px">
+    <el-form ref="form" :model="form" label-width="100px">
 
         <el-form-item label="学生姓名">
             <el-input v-model="form.studentName"></el-input>
@@ -14,16 +14,35 @@
             <el-input v-model="form.content" > </el-input>
         </el-form-item>
         <el-form-item label="项目开始时间">
-            <el-input v-model="form.data1" > </el-input>
+            <el-date-picker
+          v-model="form.data1"
+          type="date"
+            placeholder="选择开始时间"
+          align="right"
+          :picker-options="pickerOptions"
+          value-format="yyyy-MM-dd">
+        </el-date-picker>
+           
         </el-form-item>
         <el-form-item label="项目结束时间">
-            <el-input v-model="form.data2" > </el-input>
+            <el-date-picker
+          v-model="form.data2"
+          type="date"
+            placeholder="选择结束时间"
+          align="right"
+          :picker-options="pickerOptions"
+          value-format="yyyy-MM-dd">
+        </el-date-picker>
+           
         </el-form-item>
         <el-form-item label="导师">
             <el-input v-model="form.tutor" > </el-input>
         </el-form-item>
         
-
+        <el-form-item>
+        <el-button type="primary" @click="onSubmit">立即创建</el-button>
+        <el-button @click="back">取消</el-button>
+    </el-form-item>
         
     </el-form>
 
@@ -46,6 +65,9 @@ export default {
       }
     },
     methods: {
+        back(){
+        this.$router.push('/container/innovationList')
+      },
       onSubmit() {
         //console.log('submit!');
         addInnovation( this.form ).then((res) =>{
