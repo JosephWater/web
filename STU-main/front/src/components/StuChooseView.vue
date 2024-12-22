@@ -1,7 +1,7 @@
 <template>
   <div>
     <div>
-      <el-button @click="$router.push('/container/studentList')">返回</el-button>
+      <el-button style="margin-bottom: 10px; margin-top: 10px" @click="$router.push('/container/studentList')">返回</el-button>
     </div>
     <el-table :data="courseList" border style="width: 100%">
       <el-table-column fixed prop="course.courseNum" label="课序号" width="100">
@@ -10,11 +10,11 @@
       </el-table-column>
       <el-table-column prop="course.openingUnit" label="开课单位" width="100">
       </el-table-column>
-      <el-table-column prop="course.totalHours" label="总学时" width="100">
+      <el-table-column prop="course.totalHours" label="总学时" width="80">
       </el-table-column>
-      <el-table-column prop="course.credits" label="学分" width="100">
+      <el-table-column prop="course.credits" label="学分" width="80">
       </el-table-column>
-      <el-table-column prop="course.courseType" label="课程类型" width="100">
+      <el-table-column prop="course.courseType" label="课程类型" width="80">
       </el-table-column>
       <el-table-column prop="course.place" label="上课地点" width="100">
       </el-table-column>

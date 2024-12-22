@@ -42,14 +42,14 @@ const routes = [
                 path: '/container/studentList/chooseStudent',
                 component: () => import('../components/StuChooseView.vue'),
                 meta: {
-                    title: '学生管理'
+                    title: '学生管理 / 学生选课'
                 }
             },
             {
                 path: '/container/studentList/createStudent',
                 component: () => import('../components/create/createStudent.vue'),
                 meta: {
-                    title: '学生管理 / 新建学生'
+                    title: '学生管理 / 添加学生 '
                 }
             },
             {
@@ -71,7 +71,7 @@ const routes = [
                 path: '/container/teacherList/createTeacher',
                 component: () => import('../components/create/createTeacher.vue'),
                 meta: {
-                    title: '教师管理 / 新增教师'
+                    title: '教师管理 / 添加教师'
                 }
             },
             {
@@ -85,7 +85,7 @@ const routes = [
                 path: '/container/editScore',
                 component: () => import('../components/edit/editScore.vue'),
                 meta: {
-                    title: '教务管理 / 成绩管理'
+                    title: '教务管理 / 成绩管理 / 学生成绩'
                 }
             },
             {
@@ -99,14 +99,14 @@ const routes = [
                 path: '/container/STUclassTable',
                 component: () => import('../views/STUclassTable.vue'),
                 meta: {
-                    title: '学业管理 / 我的课表'
+                    title: ' 我的课表'
                 }
             },
             {
                 path: '/container/courseList/createCourse',
                 component: () => import('../components/create/createCourse.vue'),
                 meta: {
-                    title: '教务管理 / 课程管理 / 新建课程'
+                    title: '教务管理 / 课程管理 / 添加课程'
                 }
             },
             {
@@ -121,39 +121,49 @@ const routes = [
                 path: '/container/STUcourse',
                 component: () => import('../views/STUcourse.vue'),
                 meta: {
-                    title: '培养管理 / 选课管理 / 已选课程'
+                    title: ' 选课管理 / 选课结果'
                 }
             },
             {
                 path: '/container/STUcourseList',
                 component: () => import('../views/STUcourseList.vue'),
                 meta: {
-                    title: '培养管理 / 培养方案'
+                    title: ' 培养方案'
                 }
             },
             {
                 path: '/container/leaveList/processedLeave',
                 component: () => import('../views/ProcessedLeaveListView.vue'),
                 meta: {
-                    title: '学生管理'
+                    title: '请假管理'
                 }
             },
             {
                 path: '/container/leaveList/leave',
                 component: () => import('../views/LeaveListView.vue'),
                 meta: {
-                    title: '学生管理'
+                    title: '请假管理'
+                }
+            },
+            {
+                path: '/container/STULeave',
+                component: () => import('../views/STULeave.vue'),
+                meta: {
+                    title: '请假记录'
                 }
             },
             {
                 path: '/container/leaveList/createLeave',
                 component: () => import('../components/create/createLeave.vue'),
+                meta: {
+                    title: '请假管理'
+                }
             },
             {
                 path: '/container/STUChooseCourse',
                 component: () => import('../views/STUChooseCourse.vue'),
                 meta: {
-                    title: '学生管理'
+                    title: '选课管理'
                 }
             },
             {
@@ -171,97 +181,157 @@ const routes = [
                 path: '/container/STUscoreList',
                 component: () => import('../views/STUscoreView.vue'),
                 meta: {
-                    title: '学业管理 / 我的成绩'
+                    title: ' 我的成绩'
                 }
             },
             {
                 path: '/container/activity',
                 component: () => import('../views/ActivityView.vue'),
                 meta: {
-                    title: '学生管理'
+                    title: '活动管理'
                 }
             },
             {
                 path: '/container/STUactivity',
                 component: () => import('../views/STUactivity.vue'),
                 meta: {
-                    title: '学生管理'
+                    title: '活动管理'
+                }
+            },
+            {
+                path: '/container/honourList/createHonour',
+                component: () => import('../components/create/createHonour.vue'),
+                meta: {
+                    title: '荣誉管理'
+                }
+            },
+            {
+                path: '/container/STUhonour',
+                component: () => import('../views/STUhonour.vue'),
+                meta: {
+                    title: '我的荣誉'
                 }
             },
             {
                 path: '/container/honourList',
                 component: () => import('../views/HonourListView.vue'),
+                meta: {
+                    title: '荣誉管理'
+                }
             },
             {
                 path: '/container/internshipList',
                 component: () => import('../views/InternshipListView.vue'),
+                meta: {
+                    title: '校外实习管理'
+                }
             },
 
             {
                 path: '/container/internshipList/createInternship',
                 component: () => import('../components/create/createInternship.vue'),
+                meta: {
+                    title: '校外实习管理'
+                }
             },
 
 
             {
                 path: '/container/innovationList',
                 component: () => import('../views/InnovationListView.vue'),
+                meta: {
+                    title: '创新项目管理'
+                }
             },
 
             {
                 path: '/container/innovationList/createInnovation',
                 component: () => import('../components/create/createInnovation.vue'),
+                meta: {
+                    title: '创新项目管理'
+                }
             },
             {
                 path: '/container/socialpraticeList',
                 component: () => import('../views/SocialpraticeListView.vue'),
+                meta: {
+                    title: '社会实践管理'
+                }
             },
 
             {
                 path: '/container/socialpraticeList/createSocialpratice',
                 component: () => import('../components/create/createSocialpratice.vue'),
+                meta: {
+                    title: '社会实践管理'
+                }
             },
 
             {
                 path: '/container/volunteerList',
                 component: () => import('../views/VolunteerListView.vue'),
+                meta: {
+                    title: '志愿服务管理'
+                }
             },
 
             {
                 path: '/container/volunteerList/createVolunteer',
                 component: () => import('../components/create/createVolunteer.vue'),
+                meta: {
+                    title: '志愿服务管理'
+                }
             },
 
 
             {
                 path: '/container/stuInternshipList',
                 component: () => import('../views/STUInternshipView.vue'),
+                meta: {
+                    title: '校外实习'
+                }
             },
 
             {
                 path: '/container/stuInnovationList',
                 component: () => import('../views/STUInnovationView.vue'),
+                meta: {
+                    title: '创新项目'
+                }
             },
 
             {
                 path: '/container/stuSocialpraticeList',
                 component: () => import('../views/STUSocialpraticeView.vue'),
+                meta: {
+                    title: '社会实践'
+                }
+
             },
 
             {
                 path: '/container/stuVolunteerList',
                 component: () => import('../views/STUVolunteerView.vue'),
+                meta: {
+                    title: '志愿服务'
+                }
             },
 
     
       {
         path:'/container/honourList/editHonour',
         component: () => import('../components/edit/editHonour.vue'),
+          meta: {
+              title: '荣誉管理'
+          }
       },
       
       {
         path:'/container/studentleaveList/editStudentleave',
         component: () => import('../components/edit/editLeave.vue'),
+          meta: {
+              title: '请假管理'
+          }
       },
      
     ]

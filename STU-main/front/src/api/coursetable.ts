@@ -10,12 +10,12 @@ export const getCourseList = () =>{
         }
     })
 }
-export const getCourseList2 = () =>{
+export const getCourseList2 = (data) =>{
     return request({
         method:'GET',
         url:'/courseChoose/getCourseChooseListFromStudentNot',
         params: {
-            studentId:studentId
+            studentId:data
         }
     })
 }

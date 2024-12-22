@@ -42,7 +42,7 @@
       </el-submenu>
       <el-submenu index="5">
         <template #title>
-          <span> 创新实践管理管理 </span>
+          <span> 创新实践管理 </span>
         </template>
         <el-menu-item index="/container/internshipList">
           <span>校外实习管理</span>

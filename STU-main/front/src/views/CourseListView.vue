@@ -7,19 +7,19 @@
       <el-table-column fixed prop="courseNum" label="课序号" width="100">
       </el-table-column>
 
-      <el-table-column prop="courseName" label="课程名称" width="100">
+      <el-table-column prop="courseName" label="课程名称" width="110">
       </el-table-column>
-      <el-table-column prop="openingUnit" label="开课单位" width="100">
+      <el-table-column prop="openingUnit" label="开课单位" width="110">
       </el-table-column>
-      <el-table-column prop="totalHours" label="总学时" width="100">
+      <el-table-column prop="totalHours" label="总学时" width="70">
       </el-table-column>
-      <el-table-column prop="credits" label="学分" width="100">
+      <el-table-column prop="credits" label="学分" width="60">
       </el-table-column>
       <el-table-column prop="courseType" label="课程类型" width="100">
       </el-table-column>
       <el-table-column prop="place" label="上课地点" width="100">
       </el-table-column>
-      <el-table-column prop="teacherName" label="任课教师" width="100">
+      <el-table-column prop="teacherName" label="任课教师" width="90">
       </el-table-column>
       <el-table-column prop="pre1" label="平时成绩占比" width="120" :formatter="formatPercentage">
       </el-table-column>

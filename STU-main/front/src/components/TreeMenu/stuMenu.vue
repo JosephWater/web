@@ -4,7 +4,7 @@
       <el-menu-item index="/container/HomePage">
         <span>学生主页</span>
       </el-menu-item>
-      <el-submenu index="2">
+      <el-submenu index="1">
         <template #title>
           <span> 培养管理 </span>
         </template>
@@ -14,14 +14,9 @@
         <el-menu-item index="/container/STUChooseCourse">
           <span>选课管理</span>
         </el-menu-item>
-        <el-menu-item index="/container/STUhonour">
-          <span>我的荣誉</span>
-        </el-menu-item>
-         <el-menu-item index="/container/STULeave">
-          <span>请假记录</span>
-        </el-menu-item>
+
       </el-submenu>
-      <el-submenu index="3">
+      <el-submenu index="2">
         <template #title>
           <span> 学业管理 </span>
         </template>
@@ -32,12 +27,23 @@
           <span>我的成绩</span>
         </el-menu-item>
       </el-submenu>
-
-
-      <router-link to="/container/STUactivity" style="text-decoration:none">
-        <el-menu-item index="1-4">活动申请</el-menu-item>
-      </router-link>
       <el-submenu index="3">
+        <template #title>
+          <span> 个人事项 </span>
+        </template>
+        <el-menu-item index="/container/STUhonour">
+          <span>我的荣誉</span>
+        </el-menu-item>
+        <el-menu-item index="/container/STULeave">
+          <span>请假记录</span>
+        </el-menu-item>
+        <el-menu-item index="/container/STUactivity">
+          <span index="1-4">活动申请</span>
+        </el-menu-item>
+      </el-submenu>
+
+
+      <el-submenu index="4">
         <template #title>
           <span> 创新实践 </span>
         </template>

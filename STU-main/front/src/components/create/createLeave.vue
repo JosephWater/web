@@ -35,7 +35,7 @@
         </el-date-picker>
       </div>
     </el-form-item>
-    <el-form-item label="老师教职工号">
+    <el-form-item label="教职工号">
       <el-input v-model="form.teacherNum"></el-input>
     </el-form-item>
     <el-form-item label="老师姓名">

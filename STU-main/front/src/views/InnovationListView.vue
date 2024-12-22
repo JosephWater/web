@@ -1,7 +1,7 @@
 <template>
     <div>
       <div>
-        <el-button @click="$router.push('/container/innovationList/createInnovation')">添加创新项目</el-button>
+        <el-button style="margin-bottom: 10px; margin-top: 10px" @click="$router.push('/container/innovationList/createInnovation')">添加创新项目</el-button>
       </div>
       <el-table :data="courseList" border style="width: 100%">
         <el-table-column fixed prop="studentName" label="学生姓名" width="100">
@@ -12,9 +12,9 @@
         </el-table-column>
         <el-table-column prop="content" label="项目内容" width="100">
         </el-table-column>
-        <el-table-column prop="data1" label="项目开始时间" width="100">
+        <el-table-column prop="data1" label="项目开始时间" width="130">
         </el-table-column>
-        <el-table-column prop="data2" label="项目结束时间" width="100">
+        <el-table-column prop="data2" label="项目结束时间" width="130">
         </el-table-column>
         <el-table-column prop="tutor" label="导师" width="100">
         </el-table-column>

@@ -7,7 +7,7 @@
         <el-form-item label="学生学号">
             <el-input v-model="form.studentNum"></el-input>
         </el-form-item>
-        <el-form-item label="社会实践名称">
+        <el-form-item  label="社会实践名称">
             <el-input v-model="form.name" > </el-input>
         </el-form-item>
         <el-form-item label="社会实践单位单位">
@@ -44,7 +44,7 @@
         </el-form-item>
         <el-form-item>
         <el-button type="primary" @click="onSubmit">立即创建</el-button>
-        <el-button @click="back">取消</el-button>
+        <el-button @click="$router.push('/container/socialpraticeList')">取消</el-button>
     </el-form-item>
         
     </el-form>

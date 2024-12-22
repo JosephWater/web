@@ -21,11 +21,11 @@
       </span>
       </el-dialog>
       <el-table :data="scoreList" border style="width: 100%">
-        <el-table-column prop="course.courseName" label="课程名称" width="100">
+        <el-table-column prop="course.courseName" label="课程名称" width="80">
         </el-table-column>
-        <el-table-column prop="course.courseNum" label="课序号" width="100">
+        <el-table-column prop="course.courseNum" label="课序号" width="90">
         </el-table-column>
-        <el-table-column prop="person.name" label="学生" width="100">
+        <el-table-column prop="person.name" label="学生" width="80">
         </el-table-column>
         <el-table-column prop="person.username" label="学号" width="110">
         </el-table-column>
@@ -33,7 +33,7 @@
         </el-table-column>
         <el-table-column prop="score2" label="考试成绩" width="80">
         </el-table-column>
-        <el-table-column prop="score3" label="总成绩" width="80">
+        <el-table-column prop="score3" label="总成绩" width="70">
         </el-table-column>
         <el-table-column label="操作" align="center">
           <div align="center" slot-scope="scoped">

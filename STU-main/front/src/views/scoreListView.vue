@@ -3,13 +3,13 @@
       <el-table :data="courseList" border style="width: 100%">
         <el-table-column fixed prop="courseNum" label="课序号" width="100">
         </el-table-column>
-        <el-table-column prop="courseName" label="课程名称" width="100">
+        <el-table-column prop="courseName" label="课程名称" width="110">
         </el-table-column>
-        <el-table-column prop="openingUnit" label="开课单位" width="100">
+        <el-table-column prop="openingUnit" label="开课单位" width="110">
         </el-table-column>
-        <el-table-column prop="totalHours" label="总学时" width="100">
+        <el-table-column prop="totalHours" label="总学时" width="70">
         </el-table-column>
-        <el-table-column prop="credits" label="学分" width="100">
+        <el-table-column prop="credits" label="学分" width="60">
         </el-table-column>
         <el-table-column prop="courseType" label="课程类型" width="100">
         </el-table-column>

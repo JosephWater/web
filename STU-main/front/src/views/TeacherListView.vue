@@ -14,18 +14,18 @@
       </el-input>
     </div>
     <el-table :data="teacherList" border="">
-      <el-table-column fixed prop="person.name" label="姓名" width="100">
+      <el-table-column fixed prop="person.name" label="姓名" width="70">
       </el-table-column>
-      <el-table-column prop="person.username" label="用户名" width="120">
+      <el-table-column prop="person.username" label="用户名" width="90">
       </el-table-column>
-      <el-table-column prop="person.dept" label="学院" width="100">
+      <el-table-column prop="person.dept" label="学院" width="110">
       </el-table-column>
-      <el-table-column prop="title" label="职称" width="100"> </el-table-column>
-      <el-table-column prop="degree" label="学位" width="100">
+      <el-table-column prop="title" label="职称" width="80"> </el-table-column>
+      <el-table-column prop="degree" label="学位" width="80">
       </el-table-column>
       <el-table-column prop="person.card" label="身份证号" width="100">
       </el-table-column>
-      <el-table-column prop="person.gender" label="性别" width="100">
+      <el-table-column prop="person.gender" label="性别" width="100"  :formatter="genderFormatter">
       </el-table-column>
       <el-table-column prop="person.birthday" label="出生日期" width="100">
       </el-table-column>
@@ -38,7 +38,7 @@
       <el-table-column label="操作" align="center">
         <div align="center" slot-scope="scoped">
           <el-button @click="edit(scoped.row)"  size="mini" icon="el-icon-edit"></el-button>
-          <el-button  @click="$router.push('/container/teacherList/editTeacher')"  size="mini" icon="el-icon-more"></el-button>
+          <el-button  @click="reset(scoped.row)"  size="mini" icon="el-icon-refresh-right"></el-button>
           <el-button  @click="$router.push('/container/teacherList/editTeacher')" type="danger" size="mini" icon="el-icon-delete"></el-button>
         </div>
       </el-table-column>
@@ -59,6 +59,7 @@
 </template>
 <script>
 import { getTeacherList,deleteTeacher } from '../api/teachertable.ts';
+import {reset} from "../api/studenttable.ts";
 //import store from '@/store'
 //import jwt_decode from "jwt-decode";
 export default {
@@ -72,10 +73,34 @@ export default {
     }
   },
   methods: {
+    genderFormatter(row, column, cellValue) {
+      // cellValue 是当前单元格的值，即 person.gender
+      // 根据 cellValue 的值返回对应的文本
+      const genderMap = {
+        1: '男',
+        2: '女',
+        // 可以添加更多映射，如果需要的话
+      };
+      return genderMap[cellValue] || '未知'; // 如果 cellValue 不在映射中，返回 '未知'
+    },
     edit(row){
       console.log(row)
       this.$store.commit('setTeacherInfo', row);
       this.$router.push('/container/teacherList/editTeacher')
+    },
+    reset(row) {
+      console.log(row.person.id);
+      this.$confirm('是否重置密码为123', '重置提示').then(() => {
+        reset(row.person.id).then(() => {
+          this.getAllteacherList();
+          this.$message.success('已重置')
+        })
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消重置'
+        });
+      });
     },
     async getAllteacherList() {
       try {

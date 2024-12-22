@@ -38,7 +38,7 @@
         </el-form-item>
       </el-form>
     </div>
-    <div class="login-box2">
+<!--    <div class="login-box2">
       <h2 class="login-title">注册</h2>
       <el-form :model="form">
         <el-form-item label="身份">
@@ -61,7 +61,7 @@
           </el-button>
         </el-form-item>
       </el-form>
-    </div>
+    </div>-->
   </div>
 </template>
 
@@ -159,7 +159,7 @@ export default {
 
   position: absolute;
   top: 50%;
-  left: 36%;
+  left: 50%;
   transform: translate(-50%, -50%);
   width: 300px;
   padding: 40px;

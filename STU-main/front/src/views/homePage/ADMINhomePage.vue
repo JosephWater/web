@@ -67,7 +67,7 @@ export default {
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(26, 115, 232, 0.2);
   float: left;
-  width: 26%;
+  width: 25%;
   height: 200px;
   margin-left: 5px;
 }

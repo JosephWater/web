@@ -1,10 +1,10 @@
 <template>
     <div>
       <div>
-        <el-button @click="$router.push('/container/leaveList/leave')">所有的请假申请</el-button>
+        <el-button style="margin-bottom: 10px; margin-top: 10px" @click="$router.push('/container/leaveList/leave')">所有的请假申请</el-button>
       </div>
       <el-table :data="processedLeaveList" border style="width: 100%">
-        <el-table-column fixed prop="studentNum" label="学生学号" width="100">
+        <el-table-column fixed prop="studentNum" label="学生学号" width="120">
       </el-table-column>
       <el-table-column prop="studentName" label="学生姓名" width="100">
       </el-table-column>
@@ -13,7 +13,7 @@
       </el-table-column>
       <el-table-column prop="endData" label="返校时间" width="100">
       </el-table-column>
-      <el-table-column prop="studentleaveReason" label="请假原因" width="250">
+      <el-table-column prop="studentleaveReason" label="请假原因" width="200">
       </el-table-column>
       <el-table-column prop="approveStatus" label="批准状态" width="250">
       </el-table-column>

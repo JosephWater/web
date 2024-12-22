@@ -1,7 +1,7 @@
 <template>
     <div>
       <div>
-        <el-button @click="$router.push('/container/STUcourse')">查看选课结果</el-button>
+        <el-button style="margin-bottom: 10px; margin-top: 10px" @click="$router.push('/container/STUcourse')">查看选课结果</el-button>
       </div>
       <el-table :data="courseList" border style="width: 100%">
         <el-table-column fixed prop="courseNum" label="课序号" width="100">
@@ -11,11 +11,11 @@
         </el-table-column>
         <el-table-column prop="openingUnit" label="开课单位" width="100">
         </el-table-column>
-        <el-table-column prop="totalHours" label="总学时" width="100">
+        <el-table-column prop="totalHours" label="总学时" width="80">
         </el-table-column>
-        <el-table-column prop="credits" label="学分" width="100">
+        <el-table-column prop="credits" label="学分" width="80">
         </el-table-column>
-        <el-table-column prop="courseType" label="课程类型" width="100">
+        <el-table-column prop="courseType" label="课程类型" width="80">
         </el-table-column>
         <el-table-column prop="place" label="上课地点" width="100">
         </el-table-column>
@@ -48,6 +48,14 @@
         myInfo:[],
       }
     },
+    computed: {
+      // 定义一个计算属性 courseInfo
+      userInfo() {
+        // 返回 Vuex store 中的 courseInfo 状态
+        return this.$store.state.userInfo;
+      }
+      // 您还可以在这里定义其他计算属性
+    },
     methods: {
       formatPercentage(row, column, cellValue) {
         return (cellValue)+ '%';
@@ -57,7 +65,8 @@
       },
       async getAllCourseList() {
         try {
-          const res = await getCourseList2();
+          console.log(this.userInfo);
+          const res = await getCourseList2(this.userInfo.studentId);
           console.log(res.data.data);
           this.courseList = res.data.data;
           console.log(this.courseList);
@@ -71,6 +80,7 @@
         chooseCourse(UserInfo.studentId ,  row.id).then((res) =>{
           console.log(res)
           if(res.data.code == 1){
+            this.getAllCourseList()
             this.$message.success('选课成功')
           }else{
             this.$message.error(res.data.msg)

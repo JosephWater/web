@@ -166,20 +166,20 @@ export default {
   overflow: hidden;
   box-shadow: 0 4px 12px rgba(26, 115, 232, 0.2);
   float: left;
-  width: 60%;
-  height: 570px;
+  width: 59%;
+  height: 600px;
   margin-left: 5px;
+  margin-right: 5px;
 }
 
 .timetable {
   margin-right: 10px;
   display: grid;
-
   grid-template-columns: 100px repeat(7, 1fr); /* 时间段列 + 7天 */
   gap: 1px;
   background-color: #dfdbdba8; /* 表格外边框颜色 */
   border-collapse: collapse; /* 合并单元格边框 (虽然在 grid 布局中不直接起作用，但保留以防将来修改布局方式) */
-  width: 90%; /* 确保表格宽度占据父容器 */
+  width: 98%; /* 确保表格宽度占据父容器 */
   border-radius: 10px;
   height: 570px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);

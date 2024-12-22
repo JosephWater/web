@@ -1,7 +1,7 @@
 <template>
     <div>
       <div>
-        <el-button @click="$router.push('/container/honourList/createHonour')">添加荣誉信息</el-button>
+        <el-button style="margin-bottom: 10px; margin-top: 10px" @click="$router.push('/container/honourList/createHonour')">添加荣誉信息</el-button>
       </div>
       <el-table :data="honourList" border style="width: 100%">
         <el-table-column fixed prop="studentNum" label="学生学号" width="150">

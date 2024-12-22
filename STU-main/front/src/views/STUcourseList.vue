@@ -23,18 +23,6 @@
       </el-table-column>
       <el-table-column prop="time" label="上课时间" width="100" :formatter="formatPercentage2">
       </el-table-column>
-
-
-      <!--    <el-table-column fixed="right" label="操作" width="100">
-           <template slot-scope="scope">
-             <el-button @click="deleteClick(scope.row)" type="danger" size="mini"
-               >删除</el-button>
-             <el-button  @click="$router.push('/container/courseList/createCourse')"  size="mini"
-               >编辑</el-button>
-           </template>
-         </el-table-column> -->
-
-
     </el-table>
   </div>
 </template>

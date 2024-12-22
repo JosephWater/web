@@ -1,7 +1,7 @@
 import axios from "axios"
 import store from '@/store'
 const request = axios.create({
-    baseURL: "http://172.16.0.224:8080"
+    baseURL: "http://172.16.0.161:8080"
     //172.16.0.161  刘翔
     //172.16.0.224  苏浩
 })
