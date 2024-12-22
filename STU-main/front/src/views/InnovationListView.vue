@@ -25,13 +25,12 @@
           <template slot-scope="scope">
             <el-button @click="deleteClick(scope.row)" type="danger" size="mini"
               >删除</el-button>
-            <el-button  @click="$router.push('/container/innovationList/createInnovation')"  size="mini"
-              >编辑</el-button>
           </template>
         </el-table-column>
       </el-table>
     </div>
   </template>
+
   <script>
 
 import {getInnovationList, deleteInnovation} from '../api/innovationtable.ts';
@@ -43,30 +42,32 @@ import {getInnovationList, deleteInnovation} from '../api/innovationtable.ts';
       }
     },
     methods: {
-      async getInnovationList() {
+      async getAllInnovationList() {
         try {
           const res = await getInnovationList();
-          this.courseList = res.data.data.rows;
+          this.courseList = res.data.data;
+          console.log(this.courseList);
           console.log(res);
         } catch (error) {
           console.error('获取创新项目列表出错:', error);
         }
-      }
-    },
+      } ,
     deleteClick(row) {
       console.log(row.id);
       this.$confirm('是否确认删除此条创新项目的记录', '删除提示').then(() => {
         deleteInnovation(row).then(() => {
-          this.getInnovationList();
+          this.getAllInnovationList();
           this.$message.success('删除成功')
         })
       }).catch(() => {
       });
-    }
+    }}
   ,
-    created() {
-      this.getInnovationList();
+    created(){
+
+      this.getAllInnovationList();
     }
-  }
+  
+}
   
   </script>

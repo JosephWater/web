@@ -3,14 +3,14 @@ import request from "../utils/request.ts";
 export const getInnovationList = () =>{
     return request({
         method:'GET',
-        url:'/Innovation/getInnovationList',
+        url:'/innovation/getInnovationList',
     })
 }
 
 export const getStudentInnovationList = (id) =>{
     return request({
         method:'GET',
-        url:'/internship/getStudentInnovationList',
+        url:'/innovation/getStudentInnovationList',
         params:{studentId: id}
     })
 }
@@ -18,7 +18,7 @@ export const getStudentInnovationList = (id) =>{
 export const addInnovation = (data) =>{
     return request({
         method: 'POST',
-        url: '/Innovation/addInnovation',
+        url: '/innovation/addInnovation',
         data
     })
     
@@ -27,7 +27,7 @@ export const addInnovation = (data) =>{
 export const deleteInnovation = (data) => {
     return request({
         method: 'POST',
-        url: '/Innovation/deleteInnovation',
+        url: '/innovation/deleteInnovation',
         data:data
     })
 }

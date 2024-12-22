@@ -29,19 +29,37 @@ export const rejectLeave = (data) => {
     })
 }
 
+export const deleteLeave = (data) => {
+    return request({
+        method: 'POST',
+        url: '/studentleave/deleteStudentleave',
+        data:data
+    })
+}
+
 
 export const addLeave = (data) =>{
     return request({
         method: 'POST',
-        url: '/studentleave/updateStudentleave',
+        url: '/studentleave/addStudentStudentleave',
         data
     })
 }
 export const getSTULeave = (id) =>{
     return request({
         method: 'GET',
-        url:'/leave/getLeaveListFromStudent',
+        url:'/studentleave/getStudentStudentleaveList',
         params:{studentId: id}
     })
 };
+
+    export const updateStudentleave = (data) => {
+        return request({
+            method: 'POST',
+            url: '/studentleave/updateStudentleave',
+            data:data
+        })
+    }
+
+
 

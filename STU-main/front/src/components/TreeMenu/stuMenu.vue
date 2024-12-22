@@ -37,6 +37,23 @@
       <router-link to="/container/STUactivity" style="text-decoration:none">
         <el-menu-item index="1-4">活动申请</el-menu-item>
       </router-link>
+      <el-submenu index="3">
+        <template #title>
+          <span> 创新实践 </span>
+        </template>
+        <el-menu-item index="/container/stuInternshipList">
+          <span>校外实习</span>
+        </el-menu-item>
+        <el-menu-item index="/container/stuInnovationList">
+          <span>创新项目</span>
+        </el-menu-item>
+        <el-menu-item index="/container/stuSocialpraticeList">
+          <span>社会实践</span>
+        </el-menu-item>
+        <el-menu-item index="/container/stuVolunteerList">
+          <span>志愿服务</span>
+        </el-menu-item>
+      </el-submenu>
     </el-menu>
   </el-aside>
 </template>

@@ -29,8 +29,6 @@
           <template slot-scope="scope">
             <el-button @click="deleteClick(scope.row)" type="danger" size="mini"
               >删除</el-button>
-            <el-button  @click="$router.push('/container/volunteerList/createVolunteer')"  size="mini"
-              >编辑</el-button>
           </template>
         </el-table-column>
       </el-table>

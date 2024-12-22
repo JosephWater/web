@@ -9,7 +9,7 @@ export const getSocialpraticeList = () =>{
 export const getStudentSocialpraticeList = (id) =>{
     return request({
         method:'GET',
-        url:'/internship/getStudentSocialpraticeList',
+        url:'/socialpratice/getStudentSocialpraticeList',
         params:{studentId: id}
     })
 }

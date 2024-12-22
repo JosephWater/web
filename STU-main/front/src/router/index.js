@@ -253,6 +253,17 @@ const routes = [
         component: () => import('../views/STUVolunteerView.vue'),
       },
 
+    
+      {
+        path:'/container/honourList/editHonour',
+        component: () => import('../components/edit/editHonour.vue'),
+      },
+      
+      {
+        path:'/container/studentleaveList/editStudentleave',
+        component: () => import('../components/edit/editLeave.vue'),
+      },
+     
     ]
   },
   {

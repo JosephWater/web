@@ -3,7 +3,7 @@ import request from "../utils/request.ts";
 export const getHonourList = () =>{
     return request({
         method:'GET',
-        url:'/honour/getHonourList',
+        url:'/honour/getHonour',
     })
 }
 //新增和修改
@@ -24,7 +24,15 @@ export const deleteHonour = (data) => {
 export const getStuHonour = (id) =>{
     return request({
         method: 'GET',
-        url:'/honour/getHonourListFromStudent',
+        url:'/honour/getStudentHonourList',
         params:{studentId: id}
     })
-};
+}
+export const updateHonour = (data) => {
+        return request({
+            method: 'POST',
+            url: '/honour/updateHonour',
+            data:data
+        })
+    }
+

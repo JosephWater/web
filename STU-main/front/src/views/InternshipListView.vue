@@ -27,8 +27,7 @@
           <template slot-scope="scope">
             <el-button @click="deleteClick(scope.row)" type="danger" size="mini"
               >删除</el-button>
-            <el-button  @click="$router.push('/container/internshipList/createInternship')"  size="mini"
-              >编辑</el-button>
+           
           </template>
         </el-table-column>
       </el-table>
@@ -45,30 +44,31 @@ import {getInternshipList, deleteInternship} from '../api/internshiptable.ts';
       }
     },
     methods: {
-      async getInternshipList() {
+      async getAllInternshipList() {
         try {
           const res = await getInternshipList();
-          this.courseList = res.data.data.rows;
-          console.log(res);
-        } catch (error) {
+          this.courseList = res.data.data;
+          console.log(this.courseList);
+          } catch (error) {
           console.error('获取校外实习列表出错:', error);
         }
-      }
-    },
+      },
+    
     deleteClick(row) {
       console.log(row.id);
       this.$confirm('是否确认删除此条校外实习的记录', '删除提示').then(() => {
         deleteInternship(row).then(() => {
-          this.getInternshipList();
+          this.getAllInternshipList();
           this.$message.success('删除成功')
         })
       }).catch(() => {
       });
     }
-  ,
+    },
     created() {
-      this.getInternshipList();
+      this.getAllInternshipList();
     }
   }
+
   
   </script>

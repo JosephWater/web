@@ -4,8 +4,7 @@
         <el-button @click="$router.push('/container/honourList/createHonour')">添加荣誉信息</el-button>
       </div>
       <el-table :data="honourList" border style="width: 100%">
-        
-        <el-table-column fixed prop="studentNum" label="学生学号" width="100">
+        <el-table-column fixed prop="studentNum" label="学生学号" width="150">
         </el-table-column>
         <el-table-column prop="studentName" label="学生姓名" width="100">
         </el-table-column>
@@ -24,7 +23,8 @@
 
         <el-table-column label="操作" align="center">
         <div align="center" slot-scope="scoped">
-          <el-button @click="$router.push('/container/honourList/createHonour')" size="mini" icon="el-icon-edit"></el-button>
+          <el-button @click="edit(scoped.row)" size="mini"
+                     icon="el-icon-edit"></el-button>
           <el-button @click="deleteClick(scoped.row)" type="danger" size="mini" icon="el-icon-delete"></el-button>
         </div>
       </el-table-column>
@@ -44,6 +44,11 @@
       }
     },
     methods: {
+      edit(row){
+      console.log(row)
+      this.$store.commit('setHonourInfo', row);
+      this.$router.push('/container/honourList/editHonour')
+    },
       deleteClick(row) {
       console.log(row);
       this.$confirm('是否确认删除此记录', '删除提示').then(() => {
@@ -61,8 +66,9 @@
       async getAllHonourList() {
         try {
           const res = await getHonourList();
-          this.honourList = res.data.data.rows;
+          this.honourList = res.data.data;
           console.log(res);
+          console.log(this.honourList);
         } catch (error) {
           console.error('获取荣誉列表出错:', error);
         }

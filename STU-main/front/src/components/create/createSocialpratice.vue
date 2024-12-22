@@ -1,5 +1,5 @@
 <template>
-    <el-form ref="form" :model="form" label-width="80px">
+    <el-form ref="form" :model="form" label-width="160px">
 
         <el-form-item label="学生姓名">
             <el-input v-model="form.studentName"></el-input>
@@ -17,10 +17,24 @@
             <el-input v-model="form.content" > </el-input>
         </el-form-item>
         <el-form-item label="实践开始时间">
-            <el-input v-model="form.startData" > </el-input>
+            <el-date-picker
+          v-model="form.startData"
+          type="date"
+            placeholder="选择开始时间"
+          align="right"
+          :picker-options="pickerOptions"
+          value-format="yyyy-MM-dd">
+        </el-date-picker>
         </el-form-item>
         <el-form-item label="实践结束时间">
-            <el-input v-model="form.endData" > </el-input>
+            <el-date-picker
+          v-model="form.endData"
+          type="date"
+            placeholder="选择结束时间"
+          align="right"
+          :picker-options="pickerOptions"
+          value-format="yyyy-MM-dd">
+        </el-date-picker>
         </el-form-item>
         <el-form-item label="证明人">
             <el-input v-model="form.certifier" > </el-input>
@@ -28,7 +42,10 @@
         <el-form-item label="实践期间评价情况">
             <el-input v-model="form.evaluate" > </el-input>
         </el-form-item>
-
+        <el-form-item>
+        <el-button type="primary" @click="onSubmit">立即创建</el-button>
+        <el-button @click="back">取消</el-button>
+    </el-form-item>
         
     </el-form>
 
