@@ -29,7 +29,7 @@
       </el-table-column>
     </el-table>
     <div class="classtable1" style="margin-top: 20px;margin-right: 20px">
-      <chart/>
+      <div ref="chartDom" style="width: 500px; height: 400px;"></div>
     </div>
     <div class="classtable2" style="margin-top: 20px">
       <div ref="chartContainer" style="width: 700px; height: 400px;"></div>
@@ -39,14 +39,9 @@
 
 <script>
 import {getStuCourse} from '../api/coursetable.ts';
-import chart from "../utils/chart.vue";
 import * as echarts from 'echarts';
 
 export default {
-  components: {
-    chart,
-
-  },
   beforeDestroy() {
     if (this.chart) {
       this.chart.dispose();
@@ -56,9 +51,46 @@ export default {
     return {
       courseList: [],
       chart: null,
+      chart2: null,
     }
   },
   methods: {
+    initChart2() {
+      // 获取 DOM 元素
+      const chartDom = this.$refs.chartDom;
+      // 初始化 ECharts 实例
+      this.chart = echarts.init(chartDom);
+      const sc = this.courseList[0];
+      console.log(sc)
+      // 配置选项
+      const option = {
+        // ... 你的 ECharts 配置选项
+        tooltip: {
+          trigger: 'item',
+        },
+        legend: {
+          top: '5%',
+          left: 'center',
+        },
+        series: [
+          {
+            name: '成绩表',
+            type: 'pie',
+            radius: ['40%', '70%'],
+            // ... 其他配置
+            data: [
+              { value: sc.num1, name: '优秀' },
+              { value: sc.num2, name: '良好' },
+              { value: sc.num3, name: '及格' },
+              { value: sc.num4, name: '不及格' },
+              { value: sc.num5, name: '未评分' },
+            ],
+          },
+        ],
+      };
+      // 使用配置项生成图表
+      this.chart.setOption(option);
+    },
     initChart() {
       console.log(this.courseList)
       const chartContainer = this.$refs.chartContainer;
@@ -118,6 +150,7 @@ export default {
         this.courseList = res.data.data;
         console.log(res);
         this.initChart();
+        this.initChart2()
       } catch (error) {
         console.error('获取课程列表出错:', error);
       }

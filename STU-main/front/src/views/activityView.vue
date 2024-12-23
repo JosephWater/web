@@ -39,15 +39,11 @@
       </el-table-column>
       <el-table-column prop="organizationalUnit" label="组织单位" width="100">
       </el-table-column>
-      <el-table-column prop="startData" label="开始日期" width="100">
-      </el-table-column>
-      <el-table-column prop="endData" label="结束日期" width="100">
-      </el-table-column>
-      <el-table-column prop="studentName" label="申请人" width="80">
+      <el-table-column prop="studentName" label="申请人" width="100">
       </el-table-column>
       <el-table-column prop="studentNum" label="学号" width="100">
       </el-table-column>
-      <el-table-column prop="teacherName" label="审批人" width="80">
+      <el-table-column prop="teacherName" label="审批人" width="100">
       </el-table-column>
       <el-table-column prop="teacherNum" label="审批人账号" width="100">
       </el-table-column>

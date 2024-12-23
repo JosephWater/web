@@ -1,5 +1,18 @@
 <template>
   <div class="login-container">
+    <el-button
+        type="primary"
+        @click="login1">管理员登录
+    </el-button>
+    <el-button
+        type="primary"
+        @click="login2">学生登录
+    </el-button>
+    <el-button
+        type="primary"
+        @click="login3">教师登录
+    </el-button>
+    <div class="back"></div>
     <div class="login-box">
       <h2 class="login-title">欢迎登录</h2>
       <el-form
@@ -16,7 +29,6 @@
           <el-input
               v-model="loginForm.username"
               prefix-icon="el-icon-user"
-              autocomplete="off"
               class="input-with-focus"
           ></el-input>
         </el-form-item>
@@ -25,7 +37,6 @@
               type="password"
               v-model="loginForm.password"
               prefix-icon="el-icon-lock"
-              autocomplete="off"
               class="input-with-focus"
           ></el-input>
         </el-form-item>
@@ -35,61 +46,97 @@
               @click="submitForm('loginForm')"
               class="login-button">登录
           </el-button>
+
+        </el-form-item>
+                <el-form-item>
+                    <el-button
+              type="primary"
+              @click="$router.push('/logUp')"
+              class="login-button">注册
+          </el-button>
+
         </el-form-item>
       </el-form>
     </div>
-<!--    <div class="login-box2">
-      <h2 class="login-title">注册</h2>
-      <el-form :model="form">
-        <el-form-item label="身份">
-          <el-select v-model="form.type" placeholder="请选择身份">
-            <el-option label="教师" value="1"></el-option>
-            <el-option label="学生" value="2"></el-option>
-          </el-select>
-        </el-form-item>
-        <el-form-item label="平时成绩">
-          <el-input v-model="form.score1"></el-input>
-        </el-form-item>
-        <el-form-item label="平时成绩">
-          <el-input v-model="form.score1"></el-input>
-        </el-form-item>
-        <el-form-item>
-          <el-button
-              type="primary"
-              @click="submitForm('loginForm')"
-              class="login-button">登录
-          </el-button>
-        </el-form-item>
-      </el-form>
-    </div>-->
+
   </div>
 </template>
 
 <script>
-import {login} from "../api/login.ts";
+import {login,register} from "../api/login.ts";
 
 export default {
   data() {
     return {
       form: {
-        score1: '',
-        score2: '',
-        type:''
+        type: "",
+        username: "",
+        password: "",
+        name: "",
+
       },
       loginForm: {
         username: "",
         password: "",
-        hover: false
       },
       rules: {
-        username: [
-          {required: true, message: "请输入用户名", trigger: "blur"},
-        ],
         password: [{required: true, message: "请输入密码", trigger: "blur"}],
+        username: [{required: true, message: "请输入用户名", trigger: "blur"}],
+      },
+      rules2: {
+        username: [{required: true, message: "请输入用户名", trigger: "blur"},],
+        password: [{required: true, message: "请输入密码", trigger: "blur"}],
+        name: [{required: true, message: "请输入姓名", trigger: "blur"}],
+        type: [{required: true, message: "请输入身份", trigger: "blur"}],
       },
     };
   },
   methods: {
+    logiForm(formName) {
+      this.$refs[formName].validate(async (valid) => {
+        if (valid) {
+          register(this.form).then((res) => {
+            if (res.data.data == "注册成功") {
+              this.$message.success('注册成功')
+            } else {
+              this.$message.error(res.data.msg)
+            }
+            console.log(res)
+          })
+          return true;
+        } else {
+          console.log("error submit!!");
+          return false;
+        }
+      });
+    },
+    async login1() {
+      this.loginForm.username = "admin"
+      this.loginForm.password = "123"
+      const loginRes = await login(this.loginForm);
+      this.$store.commit('setJwt', loginRes.data.data.jwt);
+      localStorage.setItem('jwt', loginRes.data.data.jwt);
+      this.$store.commit('setUserInfo', loginRes.data.data);
+      this.$router.push('/container/HomePage');
+    },
+    async login2() {
+      this.loginForm.username = "2023003001"
+      this.loginForm.password = "123"
+      const loginRes = await login(this.loginForm);
+      this.$store.commit('setJwt', loginRes.data.data.jwt);
+      localStorage.setItem('jwt', loginRes.data.data.jwt);
+      this.$store.commit('setUserInfo', loginRes.data.data);
+      this.$router.push('/container/HomePage');
+    },
+    async login3() {
+        this.loginForm.username = "T0001"
+      this.loginForm.password = "123"
+      const loginRes = await login(this.loginForm);
+      this.$store.commit('setJwt', loginRes.data.data.jwt);
+      localStorage.setItem('jwt', loginRes.data.data.jwt);
+      this.$store.commit('setUserInfo', loginRes.data.data);
+      this.$router.push('/container/HomePage');
+    },
     submitForm(formName) {
       this.$refs[formName].validate(async (valid) => {
         if (valid) {
@@ -153,6 +200,10 @@ export default {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.back {
+
 }
 
 .login-box {

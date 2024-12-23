@@ -44,13 +44,13 @@
       </el-table>
     </div>
     <div class="classtable1">
-      <chart/>
+      <div ref="chartDom" style="width: 450px; height: 400px;"></div>
     </div>
   </div>
 </template>
 <script>
 import {addScore, deleteScore, getScore} from "../../api/score.ts";
-import chart from "../../utils/chart.vue";
+import * as echarts from 'echarts';
 
 export default {
   data() {
@@ -63,6 +63,15 @@ export default {
         score1: '',
         score2: ''
       },
+      chart: null,
+    }
+  },
+  mounted() {
+    this.initChart();
+  },
+  beforeDestroy() {
+    if (this.chart) {
+      this.chart.dispose();
     }
   },
   computed: {
@@ -73,10 +82,43 @@ export default {
     }
     // 您还可以在这里定义其他计算属性
   },
-  components: {
-    chart,
-  },
   methods: {
+    initChart() {
+      // 获取 DOM 元素
+      const chartDom = this.$refs.chartDom;
+      // 初始化 ECharts 实例
+      this.chart = echarts.init(chartDom);
+      const sc = this.scoreList[0];
+      console.log(sc)
+      // 配置选项
+      const option = {
+        // ... 你的 ECharts 配置选项
+        tooltip: {
+          trigger: 'item',
+        },
+        legend: {
+          top: '5%',
+          left: 'center',
+        },
+        series: [
+          {
+            name: '成绩表',
+            type: 'pie',
+            radius: ['40%', '70%'],
+            // ... 其他配置
+            data: [
+              { value: sc.num1, name: '优秀' },
+              { value: sc.num2, name: '良好' },
+              { value: sc.num3, name: '及格' },
+              { value: sc.num4, name: '不及格' },
+              { value: sc.num5, name: '未评分' },
+            ],
+          },
+        ],
+      };
+      // 使用配置项生成图表
+      this.chart.setOption(option);
+    },
     handleConfirm() {
       addScore({"id": this.id, "score1": this.form.score1, "score2": this.form.score2}).then((res) => {
         if (res.data.data == "添加成功") {
@@ -116,7 +158,8 @@ export default {
         const res = await getScore(this.courseInfo.id);
         console.log(res);
         this.scoreList = res.data.data;
-        console.log(this.scoreList);
+        this.initChart();
+        console.log(this.scoreList[0].num3);
       } catch (error) {
         console.error('获取课程列表出错:', error);
       }

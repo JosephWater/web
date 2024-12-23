@@ -7,10 +7,10 @@
         <el-button @click="$router.push('/container/editPassword')" size="mini" icon="el-icon-unlock" style="margin-right: 5px"></el-button>
         <el-button @click="fullScreen()" size="mini" icon="el-icon-full-screen" style="margin-right: 10px"></el-button>
         <template v-if="userInfo.username != '请登录'">
-          <template v-if="userInfo.username != 'admin'">
+          <template v-if="userInfo.type ==3">
           <span class="footer-text">你好! {{ studentInfo.person.name }} ({{ userInfo.username }})</span>
           </template>
-          <template v-if="userInfo.username == 'admin'">
+          <template v-if="userInfo.type !=3">
           <span class="footer-text">你好! {{ userInfo.username }}</span>
           </template>
           <el-button @click="logout()" type="primary" size="mini" class="footer-button"
@@ -67,12 +67,16 @@ import teaMenu from './TreeMenu/teaMenu.vue';
 import adminMenu from './TreeMenu/adminMenu.vue';
 import {mapMutations} from 'vuex';
 import store from '@/store'
-import {getStudentInfo} from "../api/login.ts";
+import {getStudentInfo, login} from "../api/login.ts";
 
 export default {
   data() {
     return {
       studentInfo: [],
+      loginForm: {
+        username: "",
+        password: "",
+      },
     }
   },
   components: {
@@ -86,6 +90,32 @@ export default {
     ...mapMutations(['Statelogout']),
     handleOpen(key, keyPath) {
       console.log(key, keyPath);
+    },
+    async login1() {
+      this.loginForm.username = "admin"
+      this.loginForm.password = "123"
+      const loginRes = await login(this.loginForm);
+      localStorage.setItem('jwt', loginRes.data.data.jwt);
+      this.$store.commit('setUserInfo', loginRes.data.data);
+      this.$router.push('/container/HomePage');
+    },
+    async login2() {
+      this.loginForm.username = "2023003001"
+      this.loginForm.password = "123"
+      const loginRes = await login(this.loginForm);
+      this.$store.commit('setJwt', loginRes.data.data.jwt);
+      localStorage.setItem('jwt', loginRes.data.data.jwt);
+      this.$store.commit('setUserInfo', loginRes.data.data);
+      this.$router.push('/container/HomePage');
+    },
+    async login3() {
+      this.loginForm.username = "T0001"
+      this.loginForm.password = "123"
+      const loginRes = await login(this.loginForm);
+      this.$store.commit('setJwt', loginRes.data.data.jwt);
+      localStorage.setItem('jwt', loginRes.data.data.jwt);
+      this.$store.commit('setUserInfo', loginRes.data.data);
+      this.$router.push('/container/HomePage');
     },
     async getStuInfo() {
       try {

@@ -36,12 +36,14 @@ export const getStudentActivity = () => {
     })
 };
 export const StudentApplyActivity = (id1,id2) => {
+    console.log(id1)
+    console.log(id2)
     return request({
-        method: 'POST',
-        url: '/activity/StudentApplyActivity',
-        data:{
+        method: 'GET',
+        url: '/activity/add',
+        params:{
             studentId:id1,
-            activityId:id2
+            activityNum:id2
         }
     })
 };

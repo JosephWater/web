@@ -26,6 +26,7 @@ export default {
       const chartDom = this.$refs.chartDom;
       // 初始化 ECharts 实例
       this.chart = echarts.init(chartDom);
+
       // 配置选项
       const option = {
         // ... 你的 ECharts 配置选项
@@ -48,6 +49,7 @@ export default {
               { value: 735, name: '中等' },
               { value: 735, name: '及格' },
               { value: 0, name: '不及格' },
+              { value: 0, name: '未评分' },
               // ... 其他数据
             ],
           },

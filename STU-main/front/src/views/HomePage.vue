@@ -1,9 +1,9 @@
 <template>
     <div>
-    <template v-if="userInfo.type==1">
+    <template v-if="userInfo.type!=3">
         <ADMINhomePage />
     </template>
-    <template v-if="userInfo.type != 1">
+    <template v-if="userInfo.type == 3">
         <STUhomePage />
     </template>
     </div>

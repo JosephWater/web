@@ -7,7 +7,12 @@ const routes = [
     {
         path: '/login',
         component: () => import('../components/LoginView.vue')
-    }, {
+    },
+    {
+        path: '/logUp',
+        component: () => import('../components/LogUp.vue')
+    },
+     {
         path: '/404',
         component: () => import('../views/404View.vue')
     },

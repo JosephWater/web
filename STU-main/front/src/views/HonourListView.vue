@@ -8,7 +8,7 @@
         </el-table-column>
         <el-table-column prop="studentName" label="学生姓名" width="100">
         </el-table-column>
-        <el-table-column prop="name" label="荣誉名称" width="100">
+        <el-table-column prop="name" label="荣誉名称" width="250">
         </el-table-column>
         <el-table-column prop="honorLevel" label="荣誉等级" width="100">
         </el-table-column>
